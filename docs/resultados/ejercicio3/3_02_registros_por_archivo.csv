@@ -1,0 +1,17 @@
+tipo,periodo,registros,row_groups,created_by
+green,2026-01,40272,1,parquet-cpp-arrow version 16.1.0
+green,2026-02,37373,1,parquet-cpp-arrow version 16.1.0
+green,2026-03,44208,1,parquet-cpp-arrow version 16.1.0
+green,2026-04,44238,1,parquet-cpp-arrow version 16.1.0
+green,2026-05,44921,1,parquet-cpp-arrow version 16.1.0
+green,2026-06,44163,1,parquet-cpp-arrow version 21.0.0
+green,2026-07,41252,1,parquet-cpp-arrow version 21.0.0
+green,2026-08,40687,1,parquet-cpp-arrow version 21.0.0
+yellow,2026-01,3724889,4,parquet-cpp-arrow version 16.1.0
+yellow,2026-02,3399866,4,parquet-cpp-arrow version 16.1.0
+yellow,2026-03,3952451,4,parquet-cpp-arrow version 16.1.0
+yellow,2026-04,3831240,4,parquet-cpp-arrow version 24.0.0
+yellow,2026-05,4090836,4,parquet-cpp-arrow version 16.1.0
+yellow,2026-06,3837248,4,parquet-cpp-arrow version 21.0.0
+yellow,2026-07,3530109,4,parquet-cpp-arrow version 21.0.0
+yellow,2026-08,3336716,4,parquet-cpp-arrow version 21.0.0

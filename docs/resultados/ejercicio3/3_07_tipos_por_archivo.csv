@@ -1,0 +1,44 @@
+tipo,columna,tipos_parquet,n_tipos,en_archivos,archivos_totales
+green,request_source,BYTE_ARRAY (UTF8),1,3,8
+green,DOLocationID,INT32,1,8,8
+green,PULocationID,INT32,1,8,8
+green,RatecodeID,INT64,1,8,8
+green,VendorID,INT32,1,8,8
+green,cbd_congestion_fee,DOUBLE,1,8,8
+green,congestion_surcharge,DOUBLE,1,8,8
+green,ehail_fee,DOUBLE,1,8,8
+green,extra,DOUBLE,1,8,8
+green,fare_amount,DOUBLE,1,8,8
+green,improvement_surcharge,DOUBLE,1,8,8
+green,lpep_dropoff_datetime,INT64 (TIMESTAMP_MICROS),1,8,8
+green,lpep_pickup_datetime,INT64 (TIMESTAMP_MICROS),1,8,8
+green,mta_tax,DOUBLE,1,8,8
+green,passenger_count,INT64,1,8,8
+green,payment_type,INT64,1,8,8
+green,store_and_fwd_flag,BYTE_ARRAY (UTF8),1,8,8
+green,tip_amount,DOUBLE,1,8,8
+green,tolls_amount,DOUBLE,1,8,8
+green,total_amount,DOUBLE,1,8,8
+green,trip_distance,DOUBLE,1,8,8
+green,trip_type,INT64,1,8,8
+yellow,request_source,BYTE_ARRAY (UTF8),1,3,8
+yellow,Airport_fee,DOUBLE,1,8,8
+yellow,DOLocationID,INT32,1,8,8
+yellow,PULocationID,INT32,1,8,8
+yellow,RatecodeID,INT64,1,8,8
+yellow,VendorID,INT32,1,8,8
+yellow,cbd_congestion_fee,DOUBLE,1,8,8
+yellow,congestion_surcharge,DOUBLE,1,8,8
+yellow,extra,DOUBLE,1,8,8
+yellow,fare_amount,DOUBLE,1,8,8
+yellow,improvement_surcharge,DOUBLE,1,8,8
+yellow,mta_tax,DOUBLE,1,8,8
+yellow,passenger_count,INT64,1,8,8
+yellow,payment_type,INT64,1,8,8
+yellow,store_and_fwd_flag,BYTE_ARRAY (UTF8),1,8,8
+yellow,tip_amount,DOUBLE,1,8,8
+yellow,tolls_amount,DOUBLE,1,8,8
+yellow,total_amount,DOUBLE,1,8,8
+yellow,tpep_dropoff_datetime,INT64 (TIMESTAMP_MICROS),1,8,8
+yellow,tpep_pickup_datetime,INT64 (TIMESTAMP_MICROS),1,8,8
+yellow,trip_distance,DOUBLE,1,8,8
