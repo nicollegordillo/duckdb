@@ -164,7 +164,26 @@ Detalle del ambiente, herramientas disponibles y justificacion:
 
 ## Como descargar los datos
 
-<!-- TODO (Ejercicios 2.6, 5.1 y 8.1) -->
+```bash
+# 1. Descargar los Parquet de taxis amarillos y verdes + catalogo de zonas
+docker compose exec lab python scripts/download_data.py
+
+# 2. Verificar que la descarga este completa
+docker compose exec lab python scripts/verify_data.py
+```
+
+- Los archivos quedan en `data/raw/<tipo>/<anio>/` y el catalogo de zonas en
+  `data/raw/zonas/`. Cada descarga se registra en `data/raw/manifest.csv`.
+- Los anios por defecto estan en `ANIOS_POR_DEFECTO` dentro del script. Para
+  otros anios: `python scripts/download_data.py --anio 2024 2025 2026`.
+- Volver a ejecutar el script es seguro: solo descarga lo que falta o esta
+  corrupto. Asi se incorporan los meses que la TLC publique despues.
+- `verify_data.py` compara lo descargado con lo publicado por la TLC y deja el
+  reporte en `docs/resultados/verificacion_descarga.md`. Termina con codigo 1
+  si falta algo.
+
+Cambios realizados al script y criterio de completitud:
+[docs/ejercicio2_descarga.md](docs/ejercicio2_descarga.md).
 
 ## Como ejecutar el analisis
 
