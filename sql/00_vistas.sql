@@ -32,6 +32,8 @@ SELECT * FROM read_parquet('data/raw/green/*/*.parquet',
 --     (airport_fee solo amarillos; trip_type solo verdes; ehail_fee se
 --     descarta porque esta vacia)
 --   * anio_archivo / mes_archivo se extraen del nombre del archivo
+--   * request_source: columna no documentada que aparece desde junio de 2026
+--     (Ejercicio 3, consulta 3.6i); queda NULL en los archivos que no la traen
 -- -----------------------------------------------------------------------------
 CREATE OR REPLACE VIEW viajes AS
 SELECT
@@ -53,6 +55,7 @@ SELECT
     Airport_fee                                             AS airport_fee,
     cbd_congestion_fee,
     CAST(NULL AS INTEGER)                                   AS trip_type,
+    TRY_CAST(request_source AS VARCHAR)                     AS request_source,
     filename                                                AS archivo
 FROM yellow_raw
 UNION ALL BY NAME
@@ -75,6 +78,7 @@ SELECT
     CAST(NULL AS DOUBLE)                                    AS airport_fee,
     cbd_congestion_fee,
     TRY_CAST(trip_type AS INTEGER)                          AS trip_type,
+    TRY_CAST(request_source AS VARCHAR)                     AS request_source,
     filename                                                AS archivo
 FROM green_raw;
 
@@ -82,7 +86,7 @@ FROM green_raw;
 -- viajes_enriquecidos: columnas derivadas + banderas de calidad.
 -- Las banderas NO eliminan filas; solo marcan problemas detectados en el
 -- Ejercicio 3 para poder cuantificarlos (ver sql/ejercicio4/4_08_*.sql).
--- Umbrales elegidos (revisar con los resultados reales del Ejercicio 3):
+-- Umbrales elegidos a partir del Ejercicio 3 (docs/ejercicio3_exploracion.md):
 --   f_fuera_periodo : el pickup no cae en el mes que indica el archivo
 --   f_duracion      : duracion <= 0 min o > 6 horas
 --   f_distancia     : distancia <= 0 o > 100 millas
@@ -98,10 +102,15 @@ WITH base AS (
         CAST(pickup_at AS DATE)                                  AS fecha,
         hour(pickup_at)                                          AS hora,
         isodow(pickup_at)                                        AS dia_semana,  -- 1 = lunes
-        CASE payment_type
-            WHEN 0 THEN 'Flex fare' WHEN 1 THEN 'Tarjeta'  WHEN 2 THEN 'Efectivo'
-            WHEN 3 THEN 'Sin cargo' WHEN 4 THEN 'Disputa'  WHEN 5 THEN 'Desconocido'
-            WHEN 6 THEN 'Anulado'   ELSE 'Otro/NULL' END             AS metodo_pago
+        -- Diccionario TLC (mar. 2025). En amarillos el bloque sin datos de
+        -- pasajeros/tarifa usa payment_type = 0 (Flex Fare); en verdes el
+        -- mismo bloque trae payment_type NULL (Ejercicio 3, 3.6e).
+        CASE
+            WHEN payment_type IS NULL THEN 'Sin dato'
+            WHEN payment_type = 0 THEN 'Flex fare' WHEN payment_type = 1 THEN 'Tarjeta'
+            WHEN payment_type = 2 THEN 'Efectivo'  WHEN payment_type = 3 THEN 'Sin cargo'
+            WHEN payment_type = 4 THEN 'Disputa'   WHEN payment_type = 5 THEN 'Desconocido'
+            WHEN payment_type = 6 THEN 'Anulado'   ELSE 'Otro' END   AS metodo_pago
     FROM viajes
 )
 SELECT
