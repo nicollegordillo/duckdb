@@ -20,3 +20,8 @@ venv/
 Thumbs.db
 .idea/
 .vscode/
+
+# Bases DuckDB y temporales (se generan con los scripts)
+*.duckdb
+*.duckdb.wal
+.tmp/
