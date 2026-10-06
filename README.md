@@ -133,7 +133,7 @@ Requisitos: Docker (con Docker Compose), Git y al menos 10 GB libres.
 1. Clonar el fork del equipo y entrar a la carpeta:
 
    ```bash
-   git clone https://github.com/<usuario>/duckdb.git
+   git clone https://github.com/nicollegordillo/duckdb.git
    cd duckdb
    ```
 
