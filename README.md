@@ -1,110 +1,268 @@
-# Lab 4 — Cianobacteria en Atitlán y Amatitlán
+# Lab 8 - DuckDB
 
-Monitoreo satelital de floraciones de cianobacteria en los lagos de Atitlán y
-Amatitlán, y modelos de aprendizaje automático para detectar zonas afectadas.
+Repositorio base del laboratorio 8 del curso **CC3084 - Data Science**
+(Universidad del Valle de Guatemala, Ciclo 2, 2026).
 
-**CC3084 – Data Science · Universidad del Valle de Guatemala · Semestre II 2026**
+Este es el repositorio **proporcionado por el docente**. Contiene la estructura
+del proyecto, el ambiente de ejecucion basado en Docker y un script que descarga
+los datos de **2026**. Todo lo demas debe ser construido por cada equipo.
 
-## Equipo de desarrollo
+## Trabajo con fork
 
-- Daniel Oswaldo Juárez Herrera
-- Humberto Alexander de la Cruz
-- Nicolle Alexandra Gordillo
+El laboratorio se desarrolla y se entrega sobre un **fork** de este repositorio.
+No se trabaja directamente sobre el repositorio del docente.
 
-## Descripción del proyecto
+1. Realice un fork de este repositorio:
+   <https://github.com/menene/duckdb>
 
-Los lagos de Atitlán y Amatitlán vienen mostrando floraciones de cianobacteria, un
-riesgo para la salud pública y el turismo. El proyecto usa imágenes Sentinel-2 (vía
-openEO) para monitorear el fenómeno de forma remota, y se divide en dos partes.
+2. Clone **su propio fork** (no el del docente):
 
-**Parte 1 — Análisis geoespacial.** Se calcula el índice de cianobacteria NDCI/Chl-a
-(script CyanoLakes de Sentinel Hub) junto con NDVI y NDWI sobre 11 fechas por lago,
-entre enero de 2025 y julio de 2026, y se analiza cómo varía la floración en el tiempo
-y en el espacio.
+   ```bash
+   git clone https://github.com/nicollegordillo/duckdb.git
+   cd duckdb
+   ```
 
-**Parte 2 — Modelos de Machine Learning.** A partir de esos mismos rásteres se
-construye un conjunto de 314,896 observaciones píxel-fecha y se entrenan tres modelos
-de clasificación binaria (regresión logística, Random Forest y XGBoost) para
-identificar zonas con alta presencia de cianobacteria. Se evalúan mediante tres
-estrategias de validación —aleatoria, espacial por bloques de 1 km y temporal por
-fecha—, se analiza la generalización entre lagos, se interpretan con SHAP y se generan
-mapas predictivos.
+3. Opcional, para recibir correcciones publicadas por el docente:
 
-## Informes
+   ```bash
+   git remote add upstream https://github.com/menene/duckdb.git
+   git fetch upstream
+   ```
 
-- **Parte 1:** https://docs.google.com/document/d/1h8zRgpkovIHd9CXIRsFOxNLwAYtTIMXxwG4_hdEo6iw/edit?usp=sharing
+Realice commits frecuentes y descriptivos: el historial del repositorio es parte
+de la evaluacion. **La entrega del laboratorio es la URL de su fork.**
 
+## Estructura
 
-## Contenido
-
-| Archivo | Descripción |
-|---|---|
-| `01_descarga.py` | Descarga las 22 escenas (11 fechas × 2 lagos) vía openEO a `datos/raw/`. |
-| `02_analisis.ipynb` | **Parte 1:** cálculo de índices y análisis temporal, espacial y comparativo. |
-| `03_modelado_ml.ipynb` | **Parte 2:** dataset, modelos, validación, SHAP y mapas predictivos. |
-| `datos/` | Imágenes crudas, índices derivados, geojson de cada lago y dataset de ML. |
-| `resultados/` | CSVs, figuras y mapas interactivos generados por los notebooks. |
-| `requirements.txt` | Dependencias con versiones fijadas. |
+```text
+duckdb/
+|
++-- data/
+|   +-- raw/
+|   +-- processed/
+|
++-- notebooks/
+|
++-- scripts/
+|   +-- download_data.py      descarga (Ejercicio 2)
+|   +-- verify_data.py        verificacion de la descarga
+|   +-- run_sql.py            ejecuta y documenta las consultas
+|   +-- lab.py                utilidades compartidas
+|   +-- verificar_ambiente.py
+|
++-- sql/
+|   +-- 00_vistas.sql         vistas sobre los Parquet
+|   +-- 01_zonas.sql
+|   +-- ejercicio3/
+|   +-- ejercicio4/
+|
++-- docs/
+|
++-- Dockerfile
++-- metabase.Dockerfile
++-- docker-compose.yml
++-- README.md
+```
 
 ## Requisitos
 
+- Docker, con Docker Compose
+- Git
+
+La primera construccion del ambiente descarga varios cientos de MB y puede
+tardar algunos minutos.
+
+Considere el espacio en disco: las imagenes de Docker ocupan unos 3 GB y los
+datos de los tres anios del laboratorio superan 1.5 GB, a los que se suma la
+base materializada del Ejercicio 6. Se recomienda tener al menos 10 GB libres.
+
+## Datos
+
+El repositorio incluye `scripts/download_data.py`, que descarga los archivos de
+2026 publicados por la TLC (`--help` muestra las opciones disponibles). Los
+archivos se guardan en `data/raw/<tipo>/<anio>/`.
+
+La TLC publica cada mes con varias semanas de atraso, por lo que los ultimos
+meses de 2026 todavia no existen. El script consulta al servidor que meses estan
+publicados, de modo que vuelve a ejecutarse sin problema conforme aparezcan
+nuevos archivos.
+
+Los datos descargados **no deben incluirse en el repositorio Git**. El archivo
+`.gitignore` ya esta configurado para evitarlo.
+
+Fuente de datos: NYC TLC Trip Record Data
+<https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page>
+
+Dentro de los contenedores, la carpeta `data/` del proyecto esta montada en
+`/workspace/data`. Esa es la ruta que deben usar las herramientas que corren
+dentro del ambiente, no la ruta de su computadora.
+
+> **Nota sobre DuckDB:** un archivo `.duckdb` admite un solo proceso con permiso
+> de escritura a la vez. Si conecta una herramienta externa a su base de datos,
+> use el modo de solo lectura (`read_only`) en esa conexion; de lo contrario los
+> demas procesos no podran abrir el archivo.
+
+## Material a entregar
+
+Al finalizar, su fork debe contener:
+
+- el codigo fuente modificado y los scripts de descarga;
+- las consultas SQL desarrolladas;
+- el notebook o notebooks utilizados;
+- la documentacion de las consultas;
+- los scripts utilizados para los benchmarks;
+- el codigo de los indicadores y visualizaciones;
+- el tablero o la evidencia del tablero desarrollado;
+- este `README.md`, completado segun la siguiente seccion.
+
+Los archivos de datos descargados **no** deben incluirse.
+
+---
+
+# Documentacion del equipo
+
+Las siguientes secciones deben ser completadas por cada equipo. El README final
+debe permitir que una persona que no participo en el desarrollo pueda levantar el
+ambiente, descargar los datos, ejecutar el analisis, reproducir los benchmarks y
+generar los resultados principales.
+
+## Como levantar el ambiente
+
+Requisitos: Docker (con Docker Compose), Git y al menos 10 GB libres.
+
+1. Clonar el fork del equipo y entrar a la carpeta:
+
+   ```bash
+   git clone https://github.com/nicollegordillo/duckdb.git
+   cd duckdb
+   ```
+
+2. Construir las imagenes y levantar los servicios en segundo plano (la
+   primera vez tarda varios minutos):
+
+   ```bash
+   docker compose up --build -d
+   ```
+
+3. Comprobar que ambos contenedores esten corriendo:
+
+   ```bash
+   docker compose ps          # lab8-lab y lab8-metabase deben aparecer "running"
+   ```
+
+4. Verificar librerias, DuckDB, directorios y Metabase:
+
+   ```bash
+   docker compose exec lab python scripts/verificar_ambiente.py
+   ```
+
+5. Abrir los servicios:
+   - JupyterLab: <http://localhost:8888> (sin token)
+   - Metabase: <http://localhost:3000> (la primera vez pide crear un usuario;
+     tarda alrededor de un minuto en iniciar)
+
+Para detener el ambiente: `docker compose down` (la configuracion de Metabase
+se conserva; `docker compose down -v` la borra).
+
+Todos los comandos de este README se ejecutan desde la raiz del repositorio en
+la maquina anfitriona; `docker compose exec lab ...` los corre dentro del
+contenedor, donde el proyecto esta en `/workspace`.
+
+Detalle del ambiente, herramientas disponibles y justificacion:
+[docs/ejercicio1_ambiente.md](docs/ejercicio1_ambiente.md).
+
+## Como descargar los datos
+
 ```bash
-pip install -r requirements.txt
+# 1. Descargar los Parquet de taxis amarillos y verdes + catalogo de zonas
+docker compose exec lab python scripts/download_data.py
+
+# 2. Verificar que la descarga este completa
+docker compose exec lab python scripts/verify_data.py
 ```
 
-Se necesita una cuenta gratuita del [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu)
-para ejecutar `01_descarga.py`; la primera ejecución abre el navegador para autenticarse.
+- Los archivos quedan en `data/raw/<tipo>/<anio>/` y el catalogo de zonas en
+  `data/raw/zonas/`. Cada descarga se registra en `data/raw/manifest.csv`.
+- Los anios por defecto estan en `ANIOS_POR_DEFECTO` dentro del script. Para
+  otros anios: `python scripts/download_data.py --anio 2024 2025 2026`.
+- Volver a ejecutar el script es seguro: solo descarga lo que falta o esta
+  corrupto. Asi se incorporan los meses que la TLC publique despues.
+- `verify_data.py` compara lo descargado con lo publicado por la TLC y deja el
+  reporte en `docs/resultados/verificacion_descarga.md`. Termina con codigo 1
+  si falta algo.
 
-> **Nota sobre versiones.** `xgboost` está fijado en 2.0.3 a propósito. Desde la
-> versión 2.1 el parámetro `base_score` se serializa como `'[5E-1]'` en lugar de
-> `'5E-1'`, y `shap` 0.49.1 —la última versión disponible para Python 3.10— no
-> interpreta ese formato, por lo que `TreeExplainer` falla en el ejercicio 8 de la
-> Parte 2. Si se actualiza a Python 3.11 o superior, puede usarse `shap>=0.52` con
-> cualquier versión de `xgboost`.
+Cambios realizados al script y criterio de completitud:
+[docs/ejercicio2_descarga.md](docs/ejercicio2_descarga.md).
 
-## Cómo reproducir
+## Como ejecutar el analisis
 
-```bash
-# 1. Descarga de imágenes (una sola vez, tarda entre 15 y 40 minutos)
-python 01_descarga.py
-
-# 2. Parte 1: abrir y ejecutar de principio a fin
-jupyter notebook 02_analisis.ipynb
-
-# 3. Parte 2: requiere que la Parte 1 se haya ejecutado antes
-jupyter notebook 03_modelado_ml.ipynb
-```
-
-La carpeta `datos/` no se versiona: se regenera ejecutando los pasos anteriores. Los
-geojson de los lagos deben colocarse en `datos/geojson/` como `atitlan.geojson` y
-`amatitlan.geojson`; si no están, el notebook los descarga de OpenStreetMap.
-
-## Decisiones metodológicas
-
-Estas decisiones afectan a los resultados de ambas partes y están documentadas en los
-notebooks y en los informes:
-
-- **Máscara fija del lago.** Los límites provienen de OpenStreetMap (96 % de la
-  superficie oficial de Atitlán y 99 % de la de Amatitlán) y se mantienen constantes en
-  todas las fechas. Recalcular la máscara por fecha excluiría los píxeles con floración,
-  que ópticamente dejan de comportarse como agua, sesgando el análisis contra el
-  fenómeno de interés.
-- **Fecha descartada.** La imagen de Atitlán del 18/01/2025 presentó reflectancia fuera
-  de rango físico en el 75 % de su superficie y se excluyó por completo de ambas partes.
-- **Umbral de floración.** Chl-a ≥ 10 µg/L, correspondiente al Nivel de Alerta 1 de la
-  OMS para aguas recreativas y equivalente a NDCI ≥ 0.2413.
-- **Control de fuga de información.** En la Parte 2 se excluyen como predictoras `chla`,
-  `ndci`, `B04` y `B05`, ya que las dos bandas reconstruyen el índice de forma exacta y,
-  con él, la variable respuesta.
-
-## Versionado
-
-El historial completo está en este repositorio. Las entregas quedan marcadas con
-etiquetas de Git:
+Las consultas viven en `sql/` (una por archivo, con objetivo y fuente en el
+encabezado). `sql/00_vistas.sql` define las vistas `viajes`,
+`viajes_enriquecidos`, `viajes_validos` y `zonas` sobre los Parquet.
 
 ```bash
-git tag -l          # lista las etiquetas disponibles
+# Ejercicio 3: exploracion directa de los Parquet
+docker compose exec lab python scripts/run_sql.py ejercicio3
+
+# Ejercicio 4: analisis exploratorio
+docker compose exec lab python scripts/run_sql.py ejercicio4
 ```
 
-- `parte1` — entrega del Laboratorio 4, Parte 1
-- `parte2` — entrega del Laboratorio 4, Parte 2
+Cada comando genera `docs/resultados/<ejercicio>.md` (SQL, resultado y tiempo
+de cada consulta) y un CSV por consulta en `docs/resultados/<ejercicio>/`.
+
+Notebooks (abrir en JupyterLab y ejecutar todas las celdas, o desde la terminal
+con `docker compose exec lab jupyter nbconvert --to notebook --execute --inplace <notebook>`):
+
+- `notebooks/ejercicio3_exploracion.ipynb`
+- `notebooks/ejercicio4_analisis.ipynb`: grafica los CSV generados por
+  `run_sql.py ejercicio4` (si falta uno, ejecuta la consulta) y guarda las
+  figuras en `docs/figuras/`. Por eso se ejecuta **despues** de `run_sql.py`.
+
+### Memoria
+
+Las consultas procesan unos 30 millones de registros. `scripts/lab.py` limita
+DuckDB al 60 % de la memoria disponible en el contenedor y usa
+`data/processed/duckdb_tmp/` para temporales. Si aun asi aparece
+`Cannot allocate memory` o el proceso termina sin mensaje:
+
+- detener Metabase mientras se ejecutan las consultas (`docker compose stop metabase`)
+  y cerrar los kernels abiertos de JupyterLab;
+- reducir hilos y memoria con variables de entorno, por ejemplo:
+  `docker compose exec -e LAB8_THREADS=2 -e LAB8_MEMORY_LIMIT=2GB lab python scripts/run_sql.py ejercicio4`;
+- en Windows, mantener el repositorio fuera de carpetas sincronizadas como
+  OneDrive y, si se mueve de carpeta, recrear los contenedores
+  (`docker compose down` y `docker compose up -d`): `restart` conserva los
+  montajes de la ubicacion anterior.
+
+Documentacion e interpretacion:
+[docs/ejercicio3_exploracion.md](docs/ejercicio3_exploracion.md),
+[docs/ejercicio4_analisis.md](docs/ejercicio4_analisis.md).
+
+## Como reproducir los benchmarks
+
+<!-- TODO (Ejercicio 6) -->
+
+## Como generar los resultados principales
+
+Secuencia completa, desde un clon limpio, para los Ejercicios 1 a 4:
+
+```bash
+docker compose up --build -d
+docker compose exec lab python scripts/verificar_ambiente.py
+docker compose exec lab python scripts/download_data.py
+docker compose exec lab python scripts/verify_data.py
+docker compose exec lab python scripts/run_sql.py ejercicio3
+docker compose exec lab python scripts/run_sql.py ejercicio4
+docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio3_exploracion.ipynb
+docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio4_analisis.ipynb
+```
+
+| Resultado | Archivo |
+|---|---|
+| Verificacion de la descarga | `docs/resultados/verificacion_descarga.md` |
+| Consultas, resultados y tiempos | `docs/resultados/ejercicio3.md`, `docs/resultados/ejercicio4.md` (+ CSV) |
+| Figuras del analisis exploratorio | `docs/figuras/` |
+| Respuestas e interpretacion | `docs/ejercicio1_ambiente.md` a `docs/ejercicio4_analisis.md` |
+
+<!-- Pendiente: agregar Ejercicios 5 a 9. -->
