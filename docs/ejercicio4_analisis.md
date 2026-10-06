@@ -2,7 +2,8 @@
 
 - **Consultas:** `sql/ejercicio4/` (el encabezado de cada una incluye pregunta, justificación y fuente).
 - **SQL + resultado + tiempo (4.3):** [`docs/resultados/ejercicio4.md`](resultados/ejercicio4.md), generado con `python scripts/run_sql.py ejercicio4`.
-- **Notebook con gráficas:** `notebooks/ejercicio4_analisis.ipynb` (las figuras se guardan en `docs/figuras/`).
+- **Notebook con gráficas:** `notebooks/ejercicio4_analisis.ipynb`. Grafica los CSV que genera `run_sql.py`, así las consultas pesadas corren una sola vez, y guarda las figuras en `docs/figuras/`.
+- **Memoria:** con ~30 millones de registros, las medianas y percentiles exactos (`median`, `quantile_cont`) agotaban la memoria del contenedor. Se usa `approx_quantile` (T-Digest), con memoria constante y un error despreciable. Las consultas además evitan expandir o copiar la tabla completa (ver la nota en el encabezado de `4_03` y `4_10`).
 
 ## Enfoque
 
