@@ -1,6 +1,6 @@
 # Resultados de sql/ejercicio3
 
-Generado automaticamente el 2026-10-05T23:19:24 con `python scripts/run_sql.py ejercicio3`.
+Generado automaticamente el 2026-10-06T00:14:17 con `python scripts/run_sql.py ejercicio3`.
 No editar a mano: volver a ejecutar el script tras cambiar las consultas.
 
 DuckDB 1.5.5
@@ -10,7 +10,7 @@ DuckDB 1.5.5
 **Objetivo:** Contar los archivos Parquet descargados y listar los meses que cubren, para confirmar que no hay huecos en la serie mensual.  
 **Fuente:** data/raw/*/*/*.parquet (solo nombres de archivo, no se leen datos)  
 **Archivo:** `sql/ejercicio3/3_01_cantidad_archivos.sql`  
-**Tiempo de ejecucion:** 0.477 s - **filas del resultado:** 2
+**Tiempo de ejecucion:** 0.927 s - **filas del resultado:** 2
 
 ```sql
 -- @id: 3.1
@@ -43,7 +43,7 @@ ORDER BY tipo, anio;
 **Objetivo:** Obtener la cantidad de filas de cada archivo leyendo unicamente el footer del Parquet (sin escanear los datos) y detectar meses con volumen anormalmente bajo o alto.  
 **Fuente:** data/raw/*/*/*.parquet via parquet_file_metadata()  
 **Archivo:** `sql/ejercicio3/3_02_registros_por_archivo.sql`  
-**Tiempo de ejecucion:** 0.040 s - **filas del resultado:** 16
+**Tiempo de ejecucion:** 0.067 s - **filas del resultado:** 16
 
 ```sql
 -- @id: 3.2a
@@ -90,7 +90,7 @@ ORDER BY tipo, periodo;
 **Objetivo:** Contar el total de registros consultando los Parquet y comparar con la suma de metadatos de 3.2a (deben coincidir).  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_03_registros_totales.sql`  
-**Tiempo de ejecucion:** 0.097 s - **filas del resultado:** 3
+**Tiempo de ejecucion:** 0.178 s - **filas del resultado:** 3
 
 ```sql
 -- @id: 3.2b
@@ -123,7 +123,7 @@ FROM read_parquet('data/raw/*/*/*.parquet', union_by_name = true);
 **Objetivo:** Identificar las columnas y el tipo de dato que DuckDB infiere al leer todos los archivos amarillos en conjunto.  
 **Fuente:** data/raw/yellow/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_04_columnas_yellow.sql`  
-**Tiempo de ejecucion:** 0.021 s - **filas del resultado:** 21
+**Tiempo de ejecucion:** 0.031 s - **filas del resultado:** 21
 
 ```sql
 -- @id: 3.3a
@@ -167,7 +167,7 @@ DESCRIBE SELECT * FROM read_parquet('data/raw/yellow/*/*.parquet', union_by_name
 **Objetivo:** Identificar las columnas y el tipo de dato de los archivos verdes.  
 **Fuente:** data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_05_columnas_green.sql`  
-**Tiempo de ejecucion:** 0.022 s - **filas del resultado:** 22
+**Tiempo de ejecucion:** 0.030 s - **filas del resultado:** 22
 
 ```sql
 -- @id: 3.3b
@@ -211,7 +211,7 @@ DESCRIBE SELECT * FROM read_parquet('data/raw/green/*/*.parquet', union_by_name 
 **Objetivo:** Ver que columnas son comunes, cuales son exclusivas de un tipo y cuales tienen distinto nombre o tipo, para disenar un esquema unificado.  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_06_comparacion_columnas.sql`  
-**Tiempo de ejecucion:** 0.042 s - **filas del resultado:** 25
+**Tiempo de ejecucion:** 0.067 s - **filas del resultado:** 25
 
 ```sql
 -- @id: 3.3c
@@ -275,7 +275,7 @@ ORDER BY estado, columna;
 **Objetivo:** Revisar, columna por columna, si todos los archivos usan el mismo tipo Parquet. Una columna con mas de un tipo o presente en menos archivos que el total indica un cambio de esquema entre meses/anios.  
 **Fuente:** data/raw/*/*/*.parquet via parquet_schema()  
 **Archivo:** `sql/ejercicio3/3_07_tipos_por_archivo.sql`  
-**Tiempo de ejecucion:** 0.047 s - **filas del resultado:** 43
+**Tiempo de ejecucion:** 0.087 s - **filas del resultado:** 43
 
 ```sql
 -- @id: 3.4
@@ -365,7 +365,7 @@ _... 3 filas mas (ver CSV)._
 **Objetivo:** Inspeccionar registros reales para entender formato y valores. Se ordena por un hash de varias columnas en lugar de usar USING SAMPLE: el resultado es pseudoaleatorio pero identico en cada ejecucion, sin importar cuantos hilos use DuckDB.  
 **Fuente:** data/raw/yellow/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_08_muestra_yellow.sql`  
-**Tiempo de ejecucion:** 2.338 s - **filas del resultado:** 10
+**Tiempo de ejecucion:** 5.981 s - **filas del resultado:** 10
 
 ```sql
 -- @id: 3.5a
@@ -403,7 +403,7 @@ LIMIT 10;
 **Objetivo:** Inspeccionar registros reales para entender formato y valores. Se ordena por un hash de varias columnas en lugar de usar USING SAMPLE: el resultado es pseudoaleatorio pero identico en cada ejecucion, sin importar cuantos hilos use DuckDB.  
 **Fuente:** data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_09_muestra_green.sql`  
-**Tiempo de ejecucion:** 0.114 s - **filas del resultado:** 10
+**Tiempo de ejecucion:** 0.255 s - **filas del resultado:** 10
 
 ```sql
 -- @id: 3.5b
@@ -441,7 +441,7 @@ LIMIT 10;
 **Objetivo:** Obtener min, max, promedio, cuartiles, valores unicos aproximados y porcentaje de nulos de cada columna para detectar rangos imposibles y columnas con muchos nulos.  
 **Fuente:** data/raw/yellow/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_10_resumen_yellow.sql`  
-**Tiempo de ejecucion:** 9.781 s - **filas del resultado:** 21
+**Tiempo de ejecucion:** 50.690 s - **filas del resultado:** 21
 
 ```sql
 -- @id: 3.6a
@@ -457,26 +457,26 @@ SUMMARIZE SELECT * FROM read_parquet('data/raw/yellow/*/*.parquet', union_by_nam
 
 | column_name | column_type | min | max | approx_unique | avg | std | q25 | q50 | q75 | count | null_percentage |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| VendorID | INTEGER | 1 | 7 | 4 | 1.885739809526567 | 0.7155277514022306 | 2 | 2 | 2 | 29,703,355 | 0 |
-| tpep_pickup_datetime | TIMESTAMP | 2001-01-01 09:23:58 | 2026-08-31 23:59:59 | 16,867,928 | 2026-04-30 15:29:29.519432 | NULL | 2026-03-04 00:20:10.63143 | 2026-05-01 00:29:08.654796 | 2026-06-26 00:51:36.825802 | 29,703,355 | 0 |
-| tpep_dropoff_datetime | TIMESTAMP | 2001-01-01 16:09:38 | 2026-09-01 20:16:00 | 16,587,125 | 2026-04-30 15:47:08.186216 | NULL | 2026-03-03 15:40:13.80532 | 2026-04-30 19:07:16.566626 | 2026-06-26 01:21:02.149198 | 29,703,355 | 0 |
-| passenger_count | BIGINT | 0 | 9 | 11 | 1.2494318488564 | 0.6529195072996766 | 1 | 1 | 1 | 29,703,355 | 25.98 |
-| trip_distance | DOUBLE | 0.0 | 328522.2 | 7,217 | 5.552940149688977 | 550.6497893231075 | 1.0224558505730523 | 1.855711141664759 | 3.8143020104325203 | 29,703,355 | 0 |
-| RatecodeID | BIGINT | 1 | 99 | 7 | 4.527471444398553 | 18.00092654006696 | 1 | 1 | 1 | 29,703,355 | 25.98 |
+| VendorID | INTEGER | 1 | 7 | 4 | 1.885739809526567 | 0.715527751402235 | 2 | 2 | 2 | 29,703,355 | 0 |
+| tpep_pickup_datetime | TIMESTAMP | 2001-01-01 09:23:58 | 2026-08-31 23:59:59 | 16,867,928 | 2026-04-30 15:29:29.519432 | NULL | 2026-03-03 08:52:16.673668 | 2026-04-30 18:49:24.542432 | 2026-06-26 06:36:12.304484 | 29,703,355 | 0 |
+| tpep_dropoff_datetime | TIMESTAMP | 2001-01-01 16:09:38 | 2026-09-01 20:16:00 | 16,587,125 | 2026-04-30 15:47:08.186216 | NULL | 2026-03-03 22:55:43.052413 | 2026-04-30 22:54:37.262358 | 2026-06-26 07:45:22.980705 | 29,703,355 | 0 |
+| passenger_count | BIGINT | 0 | 9 | 11 | 1.2494318488564 | 0.6529195072996739 | 1 | 1 | 1 | 29,703,355 | 25.98 |
+| trip_distance | DOUBLE | 0.0 | 328522.2 | 7,217 | 5.55294014969445 | 550.6497893230727 | 1.0210855249090016 | 1.856982426183933 | 3.813593482037547 | 29,703,355 | 0 |
+| RatecodeID | BIGINT | 1 | 99 | 7 | 4.527471444398553 | 18.00092654006735 | 1 | 1 | 1 | 29,703,355 | 25.98 |
 | store_and_fwd_flag | VARCHAR | N | Y | 2 | NULL | NULL | NULL | NULL | NULL | 29,703,355 | 25.98 |
-| PULocationID | INTEGER | 1 | 265 | 290 | 161.57793013617484 | 66.74656703251691 | 117 | 161 | 233 | 29,703,355 | 0 |
-| DOLocationID | INTEGER | 1 | 265 | 298 | 161.05139342003622 | 70.72548569211328 | 108 | 162 | 234 | 29,703,355 | 0 |
-| payment_type | BIGINT | 0 | 5 | 6 | 0.8621735154160195 | 0.6463324345961736 | 0 | 1 | 1 | 29,703,355 | 0 |
-| fare_amount | DOUBLE | -2555.2 | 7045.0 | 18,028 | 21.262128779066387 | 18.95829684595762 | 10.013286301764158 | 15.79728576165732 | 26.467882615941583 | 29,703,355 | 0 |
-| extra | DOUBLE | -7.5 | 244.35 | 360 | 1.1127003451293662 | 1.7506914816701342 | 0.0 | 0.0 | 2.4999967340056624 | 29,703,355 | 0 |
-| mta_tax | DOUBLE | -0.5 | 11.5 | 21 | 0.48825138305083704 | 0.09190423736483588 | 0.5 | 0.5 | 0.5 | 29,703,355 | 0 |
-| tip_amount | DOUBLE | -222.0 | 766.0 | 6,049 | 2.831115017142311 | 3.9665764205081904 | 0.0 | 2.0579971655686573 | 3.966019755145781 | 29,703,355 | 0 |
-| tolls_amount | DOUBLE | -129.48 | 1400.0 | 3,451 | 0.536073601786006 | 2.227031674085088 | 0.0 | 0.0 | 0.0 | 29,703,355 | 0 |
-| improvement_surcharge | DOUBLE | -1.0 | 4.0 | 6 | 0.9659906263114673 | 0.2079128726687097 | 1.0 | 1.0 | 1.0 | 29,703,355 | 0 |
-| total_amount | DOUBLE | -2560.2 | 7053.5 | 38,649 | 30.06970577231698 | 22.753408045732293 | 17.37977533400209 | 23.60504559713209 | 34.58942112402497 | 29,703,355 | 0 |
-| congestion_surcharge | DOUBLE | -2.5 | 2.75 | 7 | 2.216917730186208 | 0.8364476657907175 | 2.5 | 2.5 | 2.5 | 29,703,355 | 25.98 |
-| Airport_fee | DOUBLE | -2.0 | 27.0 | 15 | 0.16706982008687357 | 0.578186174641118 | 0.0 | 0.0 | 0.0 | 29,703,355 | 25.98 |
-| cbd_congestion_fee | DOUBLE | -0.75 | 0.75 | 3 | 0.5355387211309968 | 0.3447052699155547 | 0.0 | 0.75 | 0.75 | 29,703,355 | 0 |
+| PULocationID | INTEGER | 1 | 265 | 290 | 161.57793013617484 | 66.7465670325179 | 117 | 161 | 233 | 29,703,355 | 0 |
+| DOLocationID | INTEGER | 1 | 265 | 298 | 161.05139342003622 | 70.72548569211571 | 109 | 162 | 233 | 29,703,355 | 0 |
+| payment_type | BIGINT | 0 | 5 | 6 | 0.8621735154160195 | 0.6463324345961792 | 0 | 1 | 1 | 29,703,355 | 0 |
+| fare_amount | DOUBLE | -2555.2 | 7045.0 | 18,028 | 21.262128778901857 | 18.958296845957676 | 10.011071253185747 | 15.77860754800396 | 26.380564587245072 | 29,703,355 | 0 |
+| extra | DOUBLE | -7.5 | 244.35 | 360 | 1.112700345129355 | 1.7506914816702084 | 0.0 | 0.0 | 2.4997590347190366 | 29,703,355 | 0 |
+| mta_tax | DOUBLE | -0.5 | 11.5 | 21 | 0.4882513830508388 | 0.09190423736483679 | 0.5 | 0.5 | 0.5 | 29,703,355 | 0 |
+| tip_amount | DOUBLE | -222.0 | 766.0 | 6,049 | 2.8311150171483535 | 3.9665764205081824 | 0.0 | 2.044663348738667 | 3.9668857448198045 | 29,703,355 | 0 |
+| tolls_amount | DOUBLE | -129.48 | 1400.0 | 3,451 | 0.5360736017846343 | 2.2270316740851284 | 0.0 | 0.0 | 0.0 | 29,703,355 | 0 |
+| improvement_surcharge | DOUBLE | -1.0 | 4.0 | 6 | 0.9659906263119706 | 0.2079128726687153 | 1.0 | 1.0 | 1.0 | 29,703,355 | 0 |
+| total_amount | DOUBLE | -2560.2 | 7053.5 | 38,649 | 30.06970577192441 | 22.75340804573155 | 17.371416622729036 | 23.64247008334145 | 34.59845211254647 | 29,703,355 | 0 |
+| congestion_surcharge | DOUBLE | -2.5 | 2.75 | 7 | 2.216917730186208 | 0.836447665790652 | 2.5 | 2.5 | 2.5 | 29,703,355 | 25.98 |
+| Airport_fee | DOUBLE | -2.0 | 27.0 | 15 | 0.16706982008687357 | 0.5781861746411203 | 0.0 | 0.0 | 0.0 | 29,703,355 | 25.98 |
+| cbd_congestion_fee | DOUBLE | -0.75 | 0.75 | 3 | 0.5355387211309968 | 0.34470526991554573 | 0.0 | 0.75 | 0.75 | 29,703,355 | 0 |
 | request_source | VARCHAR | A | HV0005 | 3 | NULL | NULL | NULL | NULL | NULL | 29,703,355 | 90.23 |
 
 ---
@@ -486,7 +486,7 @@ SUMMARIZE SELECT * FROM read_parquet('data/raw/yellow/*/*.parquet', union_by_nam
 **Objetivo:** Igual que 3.6a para taxis verdes.  
 **Fuente:** data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_11_resumen_green.sql`  
-**Tiempo de ejecucion:** 0.267 s - **filas del resultado:** 22
+**Tiempo de ejecucion:** 0.760 s - **filas del resultado:** 22
 
 ```sql
 -- @id: 3.6b
@@ -500,27 +500,27 @@ SUMMARIZE SELECT * FROM read_parquet('data/raw/green/*/*.parquet', union_by_name
 
 | column_name | column_type | min | max | approx_unique | avg | std | q25 | q50 | q75 | count | null_percentage |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| VendorID | INTEGER | 1 | 6 | 3 | 2.328351833504393 | 1.2771882973738604 | 2 | 2 | 2 | 337,114 | 0 |
-| lpep_pickup_datetime | TIMESTAMP | 2008-12-31 17:35:31 | 2026-08-31 23:58:28 | 332,702 | 2026-05-02 13:25:51.096427 | NULL | 2026-03-06 03:29:57.441507 | 2026-05-03 12:04:03.27941 | 2026-06-28 06:08:48.707815 | 337,114 | 0 |
-| lpep_dropoff_datetime | TIMESTAMP | 2008-12-31 23:16:26 | 2026-09-02 09:39:37 | 396,286 | 2026-05-02 13:46:38.833759 | NULL | 2026-03-06 04:02:05.975604 | 2026-05-03 11:46:50.686768 | 2026-06-28 06:19:34.557148 | 337,114 | 0 |
+| VendorID | INTEGER | 1 | 6 | 3 | 2.328351833504393 | 1.2771882973738615 | 2 | 2 | 2 | 337,114 | 0 |
+| lpep_pickup_datetime | TIMESTAMP | 2008-12-31 17:35:31 | 2026-08-31 23:58:28 | 332,702 | 2026-05-02 13:25:51.096427 | NULL | 2026-03-05 14:54:40.687588 | 2026-05-02 10:53:28.804252 | 2026-06-29 00:03:42.863509 | 337,114 | 0 |
+| lpep_dropoff_datetime | TIMESTAMP | 2008-12-31 23:16:26 | 2026-09-02 09:39:37 | 396,286 | 2026-05-02 13:46:38.833759 | NULL | 2026-03-05 15:19:20.280822 | 2026-05-03 06:54:13.391653 | 2026-06-28 18:27:22.761652 | 337,114 | 0 |
 | store_and_fwd_flag | VARCHAR | N | Y | 2 | NULL | NULL | NULL | NULL | NULL | 337,114 | 14.47 |
-| RatecodeID | BIGINT | 1 | 99 | 7 | 1.2549672434183374 | 1.0015327424296085 | 1 | 1 | 1 | 337,114 | 14.47 |
-| PULocationID | INTEGER | 1 | 265 | 263 | 97.32761024460568 | 56.57830275002366 | 74 | 75 | 104 | 337,114 | 0 |
-| DOLocationID | INTEGER | 1 | 265 | 266 | 142.8768458147689 | 77.24476821098119 | 75 | 140 | 229 | 337,114 | 0 |
-| passenger_count | BIGINT | 0 | 9 | 11 | 1.3006461144694266 | 0.9481007387491747 | 1 | 1 | 1 | 337,114 | 14.47 |
-| trip_distance | DOUBLE | 0.0 | 179830.92 | 2,472 | 13.349507644298376 | 880.4035093234568 | 1.254147566854861 | 2.0652728121462007 | 3.6930192137709072 | 337,114 | 0 |
-| fare_amount | DOUBLE | -500.0 | 1676.7 | 4,808 | 17.01410199517066 | 17.95862763527065 | 8.607347214728781 | 13.204096758053337 | 19.661371740280494 | 337,114 | 0 |
-| extra | DOUBLE | -7.5 | 10.0 | 21 | 0.8195284087875319 | 1.3603053200356505 | 0.0 | 0.0 | 1.0 | 337,114 | 0 |
-| mta_tax | DOUBLE | -0.5 | 5.0 | 7 | 0.5467816524973748 | 0.30968692134078063 | 0.5 | 0.5 | 0.5 | 337,114 | 0 |
-| tip_amount | DOUBLE | -14.0 | 495.0 | 2,212 | 2.6208176165926957 | 5.399358172149613 | 0.0 | 2.009758569305727 | 3.8569702653605025 | 337,114 | 0 |
-| tolls_amount | DOUBLE | -24.5 | 85.0 | 75 | 0.2941987576902671 | 1.55521689955519 | 0.0 | 0.0 | 0.0 | 337,114 | 0 |
+| RatecodeID | BIGINT | 1 | 99 | 7 | 1.2549672434183374 | 1.001532742429609 | 1 | 1 | 1 | 337,114 | 14.47 |
+| PULocationID | INTEGER | 1 | 265 | 263 | 97.32761024460568 | 56.57830275002363 | 74 | 75 | 105 | 337,114 | 0 |
+| DOLocationID | INTEGER | 1 | 265 | 266 | 142.8768458147689 | 77.24476821098133 | 75 | 140 | 229 | 337,114 | 0 |
+| passenger_count | BIGINT | 0 | 9 | 11 | 1.3006461144694266 | 0.9481007387491724 | 1 | 1 | 1 | 337,114 | 14.47 |
+| trip_distance | DOUBLE | 0.0 | 179830.92 | 2,472 | 13.349507644298589 | 880.4035093234602 | 1.2547362084877447 | 2.0664427789364144 | 3.692927759057714 | 337,114 | 0 |
+| fare_amount | DOUBLE | -500.0 | 1676.7 | 4,808 | 17.014101995171035 | 17.958627635270734 | 8.6052967691756 | 13.227575877193386 | 19.679178764906137 | 337,114 | 0 |
+| extra | DOUBLE | -7.5 | 10.0 | 21 | 0.8195284087875319 | 1.3603053200356445 | 0.0 | 0.0 | 1.0 | 337,114 | 0 |
+| mta_tax | DOUBLE | -0.5 | 5.0 | 7 | 0.5467816524973748 | 0.3096869213407807 | 0.5 | 0.5 | 0.5 | 337,114 | 0 |
+| tip_amount | DOUBLE | -14.0 | 495.0 | 2,212 | 2.6208176165925527 | 5.3993581721495945 | 0.0 | 2.010430709002768 | 3.856216563457941 | 337,114 | 0 |
+| tolls_amount | DOUBLE | -24.5 | 85.0 | 75 | 0.2941987576902501 | 1.5552168995551865 | 0.0 | 0.0 | 0.0 | 337,114 | 0 |
 | ehail_fee | DOUBLE | NULL | NULL | 0 | NULL | NULL | NULL | NULL | NULL | 337,114 | 100 |
-| improvement_surcharge | DOUBLE | -1.0 | 1.0 | 5 | 0.9152746548647911 | 0.25186030830555645 | 1.0 | 1.0 | 1.0 | 337,114 | 0 |
-| total_amount | DOUBLE | -501.5 | 1678.2 | 8,186 | 25.492562070990623 | 20.55277723176865 | 14.961243401143468 | 20.45196334140254 | 29.681891279257847 | 337,114 | 0 |
-| payment_type | BIGINT | 1 | 4 | 4 | 1.2481350077512927 | 0.4624714451219807 | 1 | 1 | 1 | 337,114 | 14.47 |
-| trip_type | BIGINT | 1 | 2 | 2 | 1.0518525197945459 | 0.22172957965580276 | 1 | 1 | 1 | 337,114 | 14.47 |
-| congestion_surcharge | DOUBLE | -2.75 | 2.75 | 5 | 0.8831271524143456 | 1.2846843025235135 | 0.0 | 0.0 | 2.75 | 337,114 | 14.47 |
-| cbd_congestion_fee | DOUBLE | -0.75 | 0.75 | 3 | 0.06234018759232782 | 0.20713685724463024 | 0.0 | 0.0 | 0.0 | 337,114 | 0 |
+| improvement_surcharge | DOUBLE | -1.0 | 1.0 | 5 | 0.915274654864457 | 0.2518603083055542 | 1.0 | 1.0 | 1.0 | 337,114 | 0 |
+| total_amount | DOUBLE | -501.5 | 1678.2 | 8,186 | 25.492562070990026 | 20.55277723176857 | 14.944931296068003 | 20.46211232939094 | 29.687294770068505 | 337,114 | 0 |
+| payment_type | BIGINT | 1 | 4 | 4 | 1.2481350077512927 | 0.46247144512197924 | 1 | 1 | 1 | 337,114 | 14.47 |
+| trip_type | BIGINT | 1 | 2 | 2 | 1.0518525197945459 | 0.22172957965580284 | 1 | 1 | 1 | 337,114 | 14.47 |
+| congestion_surcharge | DOUBLE | -2.75 | 2.75 | 5 | 0.8831271524143456 | 1.2846843025235193 | 0.0 | 0.0 | 2.75 | 337,114 | 14.47 |
+| cbd_congestion_fee | DOUBLE | -0.75 | 0.75 | 3 | 0.06234018759232782 | 0.20713685724462977 | 0.0 | 0.0 | 0.0 | 337,114 | 0 |
 | request_source | VARCHAR | A | HV0005 | 2 | NULL | NULL | NULL | NULL | NULL | 337,114 | 94.3 |
 
 ---
@@ -530,7 +530,7 @@ SUMMARIZE SELECT * FROM read_parquet('data/raw/green/*/*.parquet', union_by_name
 **Objetivo:** Cuantificar cada tipo de problema (fechas fuera del mes del archivo, duraciones y distancias imposibles, montos negativos, pasajeros 0, nulos) para decidir que filtros aplicar en el analisis.  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_12_reglas_calidad.sql`  
-**Tiempo de ejecucion:** 1.424 s - **filas del resultado:** 2
+**Tiempo de ejecucion:** 4.573 s - **filas del resultado:** 2
 
 ```sql
 -- @id: 3.6c
@@ -590,7 +590,7 @@ ORDER BY tipo DESC;
 **Objetivo:** Ver a que fechas corresponden los registros que no caen en el mes del archivo (bordes de mes vs. fechas claramente erroneas como 2008/2009).  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_13_fechas_fuera_de_mes.sql`  
-**Tiempo de ejecucion:** 0.483 s - **filas del resultado:** 30
+**Tiempo de ejecucion:** 1.526 s - **filas del resultado:** 30
 
 ```sql
 -- @id: 3.6d
@@ -629,30 +629,30 @@ LIMIT 30;
 | yellow | 2026-06 | 2026-04 | 15 | 2026-04-16 18:12:39 | 2026-04-20 20:50:27 |
 | yellow | 2026-08 | 2026-07 | 14 | 2026-07-31 22:08:35 | 2026-07-31 23:59:13 |
 | green | 2026-08 | 2026-07 | 12 | 2026-07-25 21:42:42 | 2026-07-31 23:58:54 |
-| green | 2026-06 | 2026-05 | 12 | 2026-05-26 19:47:06 | 2026-05-31 23:57:01 |
 | yellow | 2026-02 | 2026-01 | 12 | 2026-01-31 23:31:23 | 2026-01-31 23:59:47 |
+| green | 2026-06 | 2026-05 | 12 | 2026-05-26 19:47:06 | 2026-05-31 23:57:01 |
 | yellow | 2026-05 | 2026-04 | 11 | 2026-04-30 23:47:18 | 2026-04-30 23:59:17 |
-| green | 2026-03 | 2026-02 | 8 | 2026-02-25 20:13:58 | 2026-02-28 23:59:36 |
 | green | 2026-02 | 2026-01 | 8 | 2026-01-26 23:38:06 | 2026-01-31 22:44:43 |
+| green | 2026-03 | 2026-02 | 8 | 2026-02-25 20:13:58 | 2026-02-28 23:59:36 |
 | green | 2026-05 | 2026-04 | 8 | 2026-04-24 22:00:18 | 2026-04-30 23:54:33 |
-| yellow | 2026-07 | 2026-06 | 7 | 2026-06-30 23:39:59 | 2026-06-30 23:59:58 |
 | yellow | 2026-04 | 2026-03 | 7 | 2026-03-31 23:50:54 | 2026-03-31 23:59:10 |
+| yellow | 2026-07 | 2026-06 | 7 | 2026-06-30 23:39:59 | 2026-06-30 23:59:58 |
 | yellow | 2026-01 | 2025-12 | 6 | 2025-12-31 23:57:29 | 2025-12-31 23:59:06 |
 | green | 2026-07 | 2026-06 | 6 | 2026-06-24 21:30:14 | 2026-06-27 20:55:00 |
 | green | 2026-07 | 2026-08 | 5 | 2026-08-01 00:03:21 | 2026-08-01 14:36:42 |
 | yellow | 2026-02 | 2026-03 | 4 | 2026-03-01 00:00:37 | 2026-03-01 00:51:48 |
 | green | 2026-01 | 2025-12 | 4 | 2025-12-27 16:49:41 | 2025-12-31 22:00:16 |
 | green | 2026-02 | 2026-03 | 3 | 2026-03-01 00:04:03 | 2026-03-01 09:48:53 |
-| green | 2026-07 | 2009-01 | 3 | 2009-01-01 00:07:09 | 2009-01-01 01:30:56 |
 | yellow | 2026-04 | 2009-01 | 3 | 2009-01-01 00:02:29 | 2009-01-01 11:15:15 |
-| green | 2026-07 | 2008-12 | 2 | 2008-12-31 17:35:31 | 2008-12-31 23:07:59 |
+| green | 2026-07 | 2009-01 | 3 | 2009-01-01 00:07:09 | 2009-01-01 01:30:56 |
 | green | 2026-05 | 2008-12 | 2 | 2008-12-31 23:05:50 | 2008-12-31 23:12:44 |
-| yellow | 2026-03 | 2026-04 | 2 | 2026-04-01 00:00:16 | 2026-04-01 00:06:25 |
 | green | 2026-04 | 2026-05 | 2 | 2026-05-01 07:32:15 | 2026-05-01 07:53:18 |
-| yellow | 2026-06 | 2008-12 | 1 | 2008-12-31 23:03:25 | 2008-12-31 23:03:25 |
-| yellow | 2026-05 | 2008-12 | 1 | 2008-12-31 23:05:53 | 2008-12-31 23:05:53 |
+| green | 2026-07 | 2008-12 | 2 | 2008-12-31 17:35:31 | 2008-12-31 23:07:59 |
+| yellow | 2026-03 | 2026-04 | 2 | 2026-04-01 00:00:16 | 2026-04-01 00:06:25 |
+| yellow | 2026-08 | 2009-01 | 1 | 2009-01-01 14:39:49 | 2009-01-01 14:39:49 |
+| yellow | 2026-04 | 2001-01 | 1 | 2001-01-01 09:23:58 | 2001-01-01 09:23:58 |
 | green | 2026-03 | 2009-01 | 1 | 2009-01-01 01:35:31 | 2009-01-01 01:35:31 |
-| green | 2026-04 | 2026-03 | 1 | 2026-03-31 23:28:50 | 2026-03-31 23:28:50 |
+| green | 2026-08 | 2008-12 | 1 | 2008-12-31 23:06:23 | 2008-12-31 23:06:23 |
 
 ---
 
@@ -661,7 +661,7 @@ LIMIT 30;
 **Objetivo:** Comparar los codigos presentes (VendorID, RatecodeID, payment_type, store_and_fwd_flag) contra el diccionario de datos de la TLC para detectar codigos no documentados y nulos.  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_14_codigos_categoricos.sql`  
-**Tiempo de ejecucion:** 1.093 s - **filas del resultado:** 40
+**Tiempo de ejecucion:** 4.420 s - **filas del resultado:** 40
 
 ```sql
 -- @id: 3.6e
@@ -739,7 +739,7 @@ ORDER BY tipo DESC, columna, valor NULLS LAST;
 **Objetivo:** Verificar si total_amount es igual a la suma de tarifa, recargos, impuestos, propina y peajes. Diferencias grandes indican registros inconsistentes o componentes que no estan en el archivo.  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_15_consistencia_montos.sql`  
-**Tiempo de ejecucion:** 1.274 s - **filas del resultado:** 2
+**Tiempo de ejecucion:** 3.048 s - **filas del resultado:** 2
 
 ```sql
 -- @id: 3.6f
@@ -789,7 +789,7 @@ ORDER BY tipo DESC;
 **Objetivo:** Contar viajes repetidos con el mismo proveedor, hora de pickup y dropoff, zonas y monto total (un mismo viaje cargado dos veces).  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_16_duplicados.sql`  
-**Tiempo de ejecucion:** 1.658 s - **filas del resultado:** 2
+**Tiempo de ejecucion:** 6.497 s - **filas del resultado:** 2
 
 ```sql
 -- @id: 3.6g
@@ -831,7 +831,7 @@ FROM g GROUP BY tipo ORDER BY tipo DESC;
 **Objetivo:** Explicar de donde viene la diferencia entre total_amount y la suma de sus componentes detectada en 3.6f (36.7 % en amarillos, 19.9 % en verdes). Si la diferencia se concentra en un metodo de pago o proveedor y tiene un valor fijo, es un patron de registro y no un error aleatorio. Tambien muestra en que proveedor se concentra RatecodeID = 99.  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_17_desglose_inconsistencia_montos.sql`  
-**Tiempo de ejecucion:** 1.242 s - **filas del resultado:** 27
+**Tiempo de ejecucion:** 4.042 s - **filas del resultado:** 27
 
 ```sql
 -- @id: 3.6h
@@ -912,7 +912,7 @@ ORDER BY tipo DESC, registros DESC;
 **Objetivo:** request_source aparece solo en algunos archivos de 2026 y no esta en el diccionario de datos de la TLC (version de marzo de 2025). Se revisa en que meses existe, que valores toma y si coincide con los viajes Flex Fare (payment_type = 0) o sin metodo de pago (NULL).  
 **Fuente:** data/raw/yellow/*/*.parquet y data/raw/green/*/*.parquet  
 **Archivo:** `sql/ejercicio3/3_18_request_source.sql`  
-**Tiempo de ejecucion:** 0.162 s - **filas del resultado:** 16
+**Tiempo de ejecucion:** 0.426 s - **filas del resultado:** 16
 
 ```sql
 -- @id: 3.6i
@@ -952,14 +952,14 @@ ORDER BY tipo DESC, periodo;
 | yellow | 2026-03 | 3,952,451 | 0 | 945,748 | 0 | NULL |
 | yellow | 2026-04 | 3,831,240 | 0 | 799,786 | 0 | NULL |
 | yellow | 2026-05 | 4,090,836 | 0 | 955,371 | 0 | NULL |
-| yellow | 2026-06 | 3,837,248 | 1,013,180 | 1,013,500 | 1,013,180 | A, EH0004, CC, HV0003 |
-| yellow | 2026-07 | 3,530,109 | 969,417 | 969,727 | 969,417 | A, EH0010, HV0003, CC, EH0004 |
-| yellow | 2026-08 | 3,336,716 | 920,849 | 921,181 | 920,849 | HV0005, CC, HV0003, EH0004, EH0010, A |
+| yellow | 2026-06 | 3,837,248 | 1,013,180 | 1,013,500 | 1,013,180 | HV0003, EH0004, A, CC |
+| yellow | 2026-07 | 3,530,109 | 969,417 | 969,727 | 969,417 | HV0003, A, EH0004, EH0010, CC |
+| yellow | 2026-08 | 3,336,716 | 920,849 | 921,181 | 920,849 | HV0005, CC, HV0003, A, EH0004, EH0010 |
 | green | 2026-01 | 40,272 | 0 | 5,414 | 0 | NULL |
 | green | 2026-02 | 37,373 | 0 | 5,387 | 0 | NULL |
 | green | 2026-03 | 44,208 | 0 | 6,692 | 0 | NULL |
 | green | 2026-04 | 44,238 | 0 | 6,290 | 0 | NULL |
 | green | 2026-05 | 44,921 | 0 | 5,772 | 0 | NULL |
 | green | 2026-06 | 44,163 | 6,471 | 6,472 | 6,471 | A |
-| green | 2026-07 | 41,252 | 6,430 | 6,435 | 6,430 | CC, A |
+| green | 2026-07 | 41,252 | 6,430 | 6,435 | 6,430 | A, CC |
 | green | 2026-08 | 40,687 | 6,310 | 6,313 | 6,310 | CC, HV0005, A |

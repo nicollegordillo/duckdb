@@ -38,11 +38,51 @@ def conectar(base: str = ":memory:", vistas: bool = True, read_only: bool = Fals
     # Se ubican en data/processed/ (ignorado por Git) en lugar de la raiz.
     DIR_TEMPORAL.mkdir(parents=True, exist_ok=True)
     con.execute(f"SET temp_directory = '{DIR_TEMPORAL.as_posix()}'")
+    _configurar_memoria(con)
     if vistas:
         con.execute((DIR_SQL / "00_vistas.sql").read_text(encoding="utf-8"))
         if RUTA_ZONAS.exists():
             con.execute((DIR_SQL / "01_zonas.sql").read_text(encoding="utf-8"))
     return con
+
+
+def _memoria_disponible_mb():
+    """MemAvailable de /proc/meminfo (Linux/contenedor), en MB; None si no existe."""
+    try:
+        with open("/proc/meminfo", encoding="utf-8") as archivo:
+            for linea in archivo:
+                if linea.startswith("MemAvailable:"):
+                    return int(linea.split()[1]) // 1024
+    except OSError:
+        pass
+    return None
+
+
+def _configurar_memoria(con) -> None:
+    """Limita la memoria de DuckDB a lo que realmente esta libre.
+
+    Por defecto DuckDB usa hasta el 80 % de la RAM total, sin considerar que
+    Metabase (Java) o un kernel de Jupyter comparten la misma maquina virtual
+    de Docker. Con 30 millones de filas eso provoca "Cannot allocate memory".
+    Se fija el limite en el 60 % de la memoria disponible; si una consulta lo
+    necesita, DuckDB escribe temporales en data/processed/duckdb_tmp.
+
+    Se puede forzar con variables de entorno, p. ej.:
+        LAB8_MEMORY_LIMIT=3GB  LAB8_THREADS=4
+    """
+    limite = os.environ.get("LAB8_MEMORY_LIMIT")
+    if not limite:
+        disponible = _memoria_disponible_mb()
+        if disponible:
+            limite = f"{max(512, int(disponible * 0.6))}MB"
+    if limite:
+        con.execute(f"SET memory_limit = '{limite}'")
+    hilos = os.environ.get("LAB8_THREADS")
+    if hilos:
+        con.execute(f"SET threads = {int(hilos)}")
+    # No conservar el orden de lectura reduce memoria; todas las consultas
+    # que lo necesitan usan ORDER BY explicito.
+    con.execute("SET preserve_insertion_order = false")
 
 
 def leer_metadatos(texto: str) -> dict:

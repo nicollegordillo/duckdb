@@ -18,7 +18,7 @@ No se trabaja directamente sobre el repositorio del docente.
 2. Clone **su propio fork** (no el del docente):
 
    ```bash
-   git clone https://github.com/<su-usuario>/duckdb.git
+   git clone https://github.com/nicollegordillo/duckdb.git
    cd duckdb
    ```
 
@@ -44,8 +44,17 @@ duckdb/
 +-- notebooks/
 |
 +-- scripts/
+|   +-- download_data.py      descarga (Ejercicio 2)
+|   +-- verify_data.py        verificacion de la descarga
+|   +-- run_sql.py            ejecuta y documenta las consultas
+|   +-- lab.py                utilidades compartidas
+|   +-- verificar_ambiente.py
 |
 +-- sql/
+|   +-- 00_vistas.sql         vistas sobre los Parquet
+|   +-- 01_zonas.sql
+|   +-- ejercicio3/
+|   +-- ejercicio4/
 |
 +-- docs/
 |
@@ -124,7 +133,7 @@ Requisitos: Docker (con Docker Compose), Git y al menos 10 GB libres.
 1. Clonar el fork del equipo y entrar a la carpeta:
 
    ```bash
-   git clone https://github.com/nicollegordillo/duckdb.git
+   git clone https://github.com/<usuario>/duckdb.git
    cd duckdb
    ```
 
@@ -187,7 +196,29 @@ Cambios realizados al script y criterio de completitud:
 
 ## Como ejecutar el analisis
 
-<!-- TODO -->
+Las consultas viven en `sql/` (una por archivo, con objetivo y fuente en el
+encabezado). `sql/00_vistas.sql` define las vistas `viajes`,
+`viajes_enriquecidos`, `viajes_validos` y `zonas` sobre los Parquet.
+
+```bash
+# Ejercicio 3: exploracion directa de los Parquet
+docker compose exec lab python scripts/run_sql.py ejercicio3
+
+# Ejercicio 4: analisis exploratorio
+docker compose exec lab python scripts/run_sql.py ejercicio4
+```
+
+Cada comando genera `docs/resultados/<ejercicio>.md` (SQL, resultado y tiempo
+de cada consulta) y un CSV por consulta en `docs/resultados/<ejercicio>/`.
+
+Notebooks (abrir en JupyterLab y ejecutar todas las celdas):
+
+- `notebooks/ejercicio3_exploracion.ipynb`
+- `notebooks/ejercicio4_analisis.ipynb` (guarda las figuras en `docs/figuras/`)
+
+Documentacion e interpretacion:
+[docs/ejercicio3_exploracion.md](docs/ejercicio3_exploracion.md),
+[docs/ejercicio4_analisis.md](docs/ejercicio4_analisis.md).
 
 ## Como reproducir los benchmarks
 
