@@ -44,17 +44,21 @@ duckdb/
 +-- notebooks/
 |
 +-- scripts/
-|   +-- download_data.py      descarga (Ejercicio 2)
+|   +-- download_data.py      descarga (Ejercicios 2 y 5)
 |   +-- verify_data.py        verificacion de la descarga
 |   +-- run_sql.py            ejecuta y documenta las consultas
+|   +-- compatibilidad.py     consultas anteriores vs. datos ampliados (Ejercicio 5)
+|   +-- materializar.py       tabla DuckDB a partir de los Parquet (Ejercicio 6)
+|   +-- benchmark.py          Parquet vs. tabla materializada (Ejercicio 6)
+|   +-- perfilar.py           planes y tiempo por operador del benchmark
 |   +-- lab.py                utilidades compartidas
 |   +-- verificar_ambiente.py
 |
 +-- sql/
-|   +-- 00_vistas.sql         vistas sobre los Parquet
+|   +-- 00_vistas.sql         origen: vistas sobre los Parquet (viajes)
 |   +-- 01_zonas.sql
-|   +-- ejercicio3/
-|   +-- ejercicio4/
+|   +-- 02_vistas_analisis.sql  viajes_enriquecidos, viajes_validos
+|   +-- ejercicio3/ ... ejercicio6/
 |
 +-- docs/
 |
@@ -164,6 +168,18 @@ Requisitos: Docker (con Docker Compose), Git y al menos 10 GB libres.
 Para detener el ambiente: `docker compose down` (la configuracion de Metabase
 se conserva; `docker compose down -v` la borra).
 
+**Datos fuera del repositorio (opcional).** Si el repositorio esta en una
+carpeta sincronizada (OneDrive, Dropbox), los varios GB de datos y bases DuckDB
+se subirian a la nube. Para guardarlos en otra carpeta, cree un archivo `.env`
+junto a `docker-compose.yml` (ignorado por Git) antes de `docker compose up`:
+
+```bash
+LAB8_DATA_DIR=C:/Users/<usuario>/lab8-data
+```
+
+Por defecto se usa `./data`. En ambos casos, dentro de los contenedores los
+datos estan en `/workspace/data` y los scripts no cambian.
+
 Todos los comandos de este README se ejecutan desde la raiz del repositorio en
 la maquina anfitriona; `docker compose exec lab ...` los corre dentro del
 contenedor, donde el proyecto esta en `/workspace`.
@@ -183,8 +199,9 @@ docker compose exec lab python scripts/verify_data.py
 
 - Los archivos quedan en `data/raw/<tipo>/<anio>/` y el catalogo de zonas en
   `data/raw/zonas/`. Cada descarga se registra en `data/raw/manifest.csv`.
-- Los anios por defecto estan en `ANIOS_POR_DEFECTO` dentro del script. Para
-  otros anios: `python scripts/download_data.py --anio 2024 2025 2026`.
+- Los anios por defecto estan en `ANIOS_POR_DEFECTO` dentro del script:
+  **2024 y 2026** desde el Ejercicio 5 (unos 1.2 GB, 40 archivos). Para otros
+  anios: `python scripts/download_data.py --anio 2024 2025 2026`.
 - Volver a ejecutar el script es seguro: solo descarga lo que falta o esta
   corrupto. Asi se incorporan los meses que la TLC publique despues.
 - `verify_data.py` compara lo descargado con lo publicado por la TLC y deja el
@@ -197,19 +214,36 @@ Cambios realizados al script y criterio de completitud:
 ## Como ejecutar el analisis
 
 Las consultas viven en `sql/` (una por archivo, con objetivo y fuente en el
-encabezado). `sql/00_vistas.sql` define las vistas `viajes`,
-`viajes_enriquecidos`, `viajes_validos` y `zonas` sobre los Parquet.
+encabezado). Las vistas se crean en dos capas:
+
+- `sql/00_vistas.sql` (origen): `yellow_raw`, `green_raw` y el esquema
+  unificado `viajes`, que leen todos los Parquet descargados;
+- `sql/01_zonas.sql`: `zonas`;
+- `sql/02_vistas_analisis.sql` (analisis): `viajes_enriquecidos` y
+  `viajes_validos`, que solo dependen de `viajes` (vista o tabla).
 
 ```bash
 # Ejercicio 3: exploracion directa de los Parquet
 docker compose exec lab python scripts/run_sql.py ejercicio3
 
-# Ejercicio 4: analisis exploratorio
-docker compose exec lab python scripts/run_sql.py ejercicio4
+# Ejercicio 4: analisis exploratorio (documentado con 2026)
+docker compose exec lab python scripts/run_sql.py ejercicio4 --anio 2026
+
+# Ejercicio 5: validacion de la incorporacion de 2024
+docker compose exec lab python scripts/run_sql.py ejercicio5
+docker compose exec lab python scripts/compatibilidad.py --etapa 2024_2026 --guardar-csv
 ```
 
-Cada comando genera `docs/resultados/<ejercicio>.md` (SQL, resultado y tiempo
-de cada consulta) y un CSV por consulta en `docs/resultados/<ejercicio>/`.
+Cada `run_sql.py` genera `docs/resultados/<ejercicio>.md` (SQL, resultado y
+tiempo de cada consulta) y un CSV por consulta en `docs/resultados/<ejercicio>/`.
+
+**Anios que leen las vistas.** Por defecto, todos los descargados. `--anio`
+(o la variable de entorno `LAB8_ANIOS=2026`) restringe las vistas a esos anios;
+asi se reproducen los resultados del Ejercicio 4, que se escribieron cuando
+solo existia 2026, aunque haya mas anios descargados. Las consultas del
+Ejercicio 3 leen los Parquet con `read_parquet()` y describen todo lo
+descargado: sus resultados documentados corresponden a una descarga de solo
+2026 (`download_data.py --anio 2026`).
 
 Notebooks (abrir en JupyterLab y ejecutar todas las celdas, o desde la terminal
 con `docker compose exec lab jupyter nbconvert --to notebook --execute --inplace <notebook>`):
@@ -218,6 +252,9 @@ con `docker compose exec lab jupyter nbconvert --to notebook --execute --inplace
 - `notebooks/ejercicio4_analisis.ipynb`: grafica los CSV generados por
   `run_sql.py ejercicio4` (si falta uno, ejecuta la consulta) y guarda las
   figuras en `docs/figuras/`. Por eso se ejecuta **despues** de `run_sql.py`.
+- `notebooks/ejercicio5_incorporacion.ipynb`: grafica los CSV de
+  `run_sql.py ejercicio5` y `compatibilidad.py`.
+- `notebooks/ejercicio6_benchmark.ipynb`: grafica los CSV de `benchmark.py`.
 
 ### Memoria
 
@@ -237,32 +274,89 @@ DuckDB al 60 % de la memoria disponible en el contenedor y usa
 
 Documentacion e interpretacion:
 [docs/ejercicio3_exploracion.md](docs/ejercicio3_exploracion.md),
-[docs/ejercicio4_analisis.md](docs/ejercicio4_analisis.md).
+[docs/ejercicio4_analisis.md](docs/ejercicio4_analisis.md),
+[docs/ejercicio5_incorporacion.md](docs/ejercicio5_incorporacion.md).
 
 ## Como reproducir los benchmarks
 
-<!-- TODO (Ejercicio 6) -->
+Ejercicio 6: las mismas consultas sobre los Parquet y sobre una tabla DuckDB.
+
+```bash
+# Tabla materializada con todos los anios descargados (6.2)
+# -> data/processed/taxis.duckdb: tabla viajes + zonas + origen + vistas de analisis
+docker compose exec lab python scripts/materializar.py
+
+# Benchmark completo: 4 volumenes x 7 consultas x 2 modos (unos 30 minutos)
+docker compose stop metabase        # recomendado: libera memoria y CPU
+docker compose exec lab python scripts/benchmark.py
+
+# Perfil de operadores y planes (explica las diferencias; usa taxis.duckdb)
+docker compose exec lab python scripts/perfilar.py
+```
+
+- El benchmark crea una base por escenario en `data/processed/benchmark/` y la
+  borra al terminar (`--conservar` para mantenerlas). Requiere unos 6 GB libres
+  durante la ejecucion.
+- Escenarios: `1m` (2026-01), `3m` (2026-01 a 03), `2026` y `todos` (todos
+  los anios descargados). Opciones: `--escenarios 1m 3m`, `--consultas B1 B7`,
+  `--repeticiones 5`.
+- Salidas: `docs/resultados/ejercicio6.md` (tablas y SQL de cada consulta) y
+  `docs/resultados/ejercicio6/*.csv`. Las figuras se generan con
+  `notebooks/ejercicio6_benchmark.ipynb`.
+- Los tiempos dependen de la maquina; los del reporte se midieron con Docker
+  Desktop (WSL2) en Windows, 8 CPU y 7.6 GiB para el contenedor.
+
+Para consultar la base materializada desde Python (solo lectura, varios
+procesos a la vez):
+
+```python
+from lab import conectar
+con = conectar("data/processed/taxis.duckdb", vistas=False, read_only=True)
+```
+
+Analisis: [docs/ejercicio6_benchmark.md](docs/ejercicio6_benchmark.md).
 
 ## Como generar los resultados principales
 
-Secuencia completa, desde un clon limpio, para los Ejercicios 1 a 4:
+Secuencia completa, desde un clon limpio, para los Ejercicios 1 a 6. El orden
+importa: los Ejercicios 3 y 4 se documentaron cuando solo existia 2026, por eso
+se ejecutan antes de descargar 2024 (el 4 se puede repetir despues con
+`--anio 2026`).
 
 ```bash
 docker compose up --build -d
 docker compose exec lab python scripts/verificar_ambiente.py
-docker compose exec lab python scripts/download_data.py
-docker compose exec lab python scripts/verify_data.py
+
+# Ejercicios 2-4: solo 2026
+docker compose exec lab python scripts/download_data.py --anio 2026
 docker compose exec lab python scripts/run_sql.py ejercicio3
 docker compose exec lab python scripts/run_sql.py ejercicio4
+docker compose exec lab python scripts/compatibilidad.py --etapa 2026      # linea base del 5.7
 docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio3_exploracion.ipynb
 docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio4_analisis.ipynb
+
+# Ejercicio 5: se agrega 2024 (ANIOS_POR_DEFECTO = 2024, 2026)
+docker compose exec lab python scripts/download_data.py
+docker compose exec lab python scripts/verify_data.py
+docker compose exec lab python scripts/run_sql.py ejercicio5
+docker compose exec lab python scripts/compatibilidad.py --etapa 2024_2026 --guardar-csv
+docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio5_incorporacion.ipynb
+
+# Ejercicio 6: tabla materializada y benchmark
+docker compose stop metabase
+docker compose exec lab python scripts/materializar.py
+docker compose exec lab python scripts/benchmark.py
+docker compose exec lab python scripts/perfilar.py
+docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio6_benchmark.ipynb
 ```
 
 | Resultado | Archivo |
 |---|---|
 | Verificacion de la descarga | `docs/resultados/verificacion_descarga.md` |
-| Consultas, resultados y tiempos | `docs/resultados/ejercicio3.md`, `docs/resultados/ejercicio4.md` (+ CSV) |
-| Figuras del analisis exploratorio | `docs/figuras/` |
-| Respuestas e interpretacion | `docs/ejercicio1_ambiente.md` a `docs/ejercicio4_analisis.md` |
+| Consultas, resultados y tiempos | `docs/resultados/ejercicio3.md` a `docs/resultados/ejercicio5.md` (+ CSV) |
+| Compatibilidad de las consultas al agregar 2024 | `docs/resultados/ejercicio5_compatibilidad.md` |
+| Benchmark Parquet vs. tabla | `docs/resultados/ejercicio6.md` (+ CSV) |
+| Figuras | `docs/figuras/` |
+| Respuestas e interpretacion | `docs/ejercicio1_ambiente.md` a `docs/ejercicio6_benchmark.md` |
 
-<!-- Pendiente: agregar Ejercicios 5 a 9. -->
+<!-- Pendiente: agregar Ejercicios 7 a 9. -->

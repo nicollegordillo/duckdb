@@ -3,6 +3,11 @@
 #   docker compose up --build
 #
 # La primera construccion descarga varios cientos de MB y puede tardar.
+#
+# LAB8_DATA_DIR (opcional, en un archivo .env junto a este archivo) permite
+# guardar los datos fuera del repositorio, p. ej. fuera de carpetas
+# sincronizadas como OneDrive. Por defecto se usa ./data. En cualquier caso,
+# dentro de los contenedores los datos quedan en /workspace/data.
 
 services:
   lab:
@@ -14,7 +19,7 @@ services:
     ports:
       - "127.0.0.1:8888:8888"
     volumes:
-      - ./data:/workspace/data
+      - ${LAB8_DATA_DIR:-./data}:/workspace/data
       - ./notebooks:/workspace/notebooks
       - ./scripts:/workspace/scripts
       - ./sql:/workspace/sql
@@ -30,7 +35,7 @@ services:
       - "127.0.0.1:3000:3000"
     volumes:
       - metabase-data:/home/metabase/data
-      - ./data:/workspace/data
+      - ${LAB8_DATA_DIR:-./data}:/workspace/data
     environment:
       - MB_DB_FILE=/home/metabase/data/metabase.db
     restart: unless-stopped

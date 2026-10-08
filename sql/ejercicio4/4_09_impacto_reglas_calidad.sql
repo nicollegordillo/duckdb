@@ -3,7 +3,7 @@
 -- @pregunta: Que proporcion de los registros es atipica o inconsistente, que
 --   regla la explica y cambia entre tipos de taxi o meses?
 -- @justificacion: Cuantifica el efecto de los filtros definidos a partir del
---   Ejercicio 3 (sql/00_vistas.sql). Un mes o tipo con un porcentaje mucho mayor
+--   Ejercicio 3 (sql/02_vistas_analisis.sql). Un mes o tipo con un porcentaje mucho mayor
 --   de registros invalidos indicaria un problema de captura especifico.
 -- @fuente: vista viajes_enriquecidos (sin filtrar)
 SELECT

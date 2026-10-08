@@ -108,7 +108,7 @@ Interpretación:
 
 9. **Peso de Flex Fare por mes (3.6i).** En amarillos, Flex Fare es el 29.2 % de los viajes en enero y 30.1 % en febrero, baja a 20.9 % en abril y sube de nuevo a 27.6 % en agosto. Es una variación relevante que se analiza en el Ejercicio 4.
 
-Todas las transformaciones quedan registradas en `sql/00_vistas.sql`. Las vistas **no borran datos**: solo marcan registros con banderas, y el impacto de cada regla se cuantifica en la consulta P9 del Ejercicio 4. Los umbrales se pueden ajustar en un solo lugar.
+Todas las transformaciones quedan registradas en `sql/00_vistas.sql` (esquema unificado `viajes`) y `sql/02_vistas_analisis.sql` (banderas de calidad; hasta el Ejercicio 5 estaban al final de `00_vistas.sql`). Las vistas **no borran datos**: solo marcan registros con banderas, y el impacto de cada regla se cuantifica en la consulta P9 del Ejercicio 4. Los umbrales se pueden ajustar en un solo lugar.
 
 ## 3.9 ¿Qué significa consultar directamente un archivo Parquet?
 

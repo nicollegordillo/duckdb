@@ -1,0 +1,5 @@
+escenario,nombre,meses,archivos,filas,mib_parquet,mib_duckdb,segundos_crear_tabla,segundos_total
+1m,1 mes,1,2,3765161,62.1,103.0,7.28,7.59
+3m,3 meses,3,6,11199059,184.8,307.8,13.98,14.65
+2026,2026,8,16,30040469,495.7,842.5,36.93,39.37
+todos,todos,20,40,71870407,1171.7,1995.0,75.1,79.18

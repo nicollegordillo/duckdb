@@ -1,0 +1,5 @@
+taxi,anio,registros,pct_fuera_periodo,pct_duracion,pct_distancia,pct_velocidad,pct_monto,pct_pasajeros,pct_excluido
+yellow,2024,41169720,0.001,0.086,1.89,0.032,1.818,0.975,4.57
+yellow,2026,29703355,0.0,1.276,3.21,0.027,0.607,0.308,5.31
+green,2024,660218,0.025,0.498,5.272,0.325,0.404,1.029,7.14
+green,2026,337114,0.029,0.397,3.644,0.344,1.838,1.343,7.22

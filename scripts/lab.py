@@ -5,10 +5,17 @@
     con = conectar()                       # conexion en memoria + vistas
     meta, df, segundos = ejecutar_sql(con, "sql/ejercicio4/4_01_viajes_por_mes.sql")
 
+    con = conectar(anios=[2026])           # las vistas leen solo 2026
+
 Todas las rutas de datos en los archivos .sql son relativas a la raiz del
 repositorio (p. ej. 'data/raw/yellow/*/*.parquet'). `conectar()` cambia el
 directorio de trabajo a esa raiz para que funcionen igual desde scripts/,
 notebooks/ o la terminal, dentro o fuera del contenedor.
+
+Vistas (en este orden):
+    sql/00_vistas.sql            origen: yellow_raw, green_raw, viajes (Parquet)
+    sql/01_zonas.sql             zonas (CSV del catalogo de la TLC)
+    sql/02_vistas_analisis.sql   viajes_enriquecidos, viajes_validos
 """
 
 import os
@@ -26,11 +33,16 @@ DIR_TEMPORAL = RAIZ_REPO / "data" / "processed" / "duckdb_tmp"
 _PATRON_META = re.compile(r"^--\s*@(\w+):\s*(.*)$")
 
 
-def conectar(base: str = ":memory:", vistas: bool = True, read_only: bool = False):
-    """Abre DuckDB y (opcionalmente) crea las vistas de sql/00_vistas.sql.
+def conectar(base: str = ":memory:", vistas: bool = True, read_only: bool = False,
+             anios=None):
+    """Abre DuckDB y (opcionalmente) crea las vistas sobre los Parquet.
 
     Las vistas no copian datos: solo guardan la definicion de la consulta sobre
     los archivos Parquet, que se leen en el momento de consultar.
+
+    anios: lista de anios que leen las vistas (por defecto todos los
+    descargados). Si no se indica, se usa la variable de entorno LAB8_ANIOS
+    (p. ej. LAB8_ANIOS=2026 o LAB8_ANIOS=2024,2026).
     """
     os.chdir(RAIZ_REPO)
     con = duckdb.connect(base, read_only=read_only)
@@ -39,11 +51,42 @@ def conectar(base: str = ":memory:", vistas: bool = True, read_only: bool = Fals
     DIR_TEMPORAL.mkdir(parents=True, exist_ok=True)
     con.execute(f"SET temp_directory = '{DIR_TEMPORAL.as_posix()}'")
     _configurar_memoria(con)
+    if anios is None and os.environ.get("LAB8_ANIOS"):
+        anios = [int(a) for a in re.split(r"[,\s]+", os.environ["LAB8_ANIOS"].strip()) if a]
+    if anios:
+        fijar_archivos(con, *archivos_por_anio(anios))
     if vistas:
-        con.execute((DIR_SQL / "00_vistas.sql").read_text(encoding="utf-8"))
-        if RUTA_ZONAS.exists():
-            con.execute((DIR_SQL / "01_zonas.sql").read_text(encoding="utf-8"))
+        crear_vistas(con)
     return con
+
+
+def crear_vistas(con) -> None:
+    """Crea las vistas de origen (Parquet), zonas y analisis."""
+    con.execute((DIR_SQL / "00_vistas.sql").read_text(encoding="utf-8"))
+    if RUTA_ZONAS.exists():
+        con.execute((DIR_SQL / "01_zonas.sql").read_text(encoding="utf-8"))
+    con.execute((DIR_SQL / "02_vistas_analisis.sql").read_text(encoding="utf-8"))
+
+
+def archivos_por_anio(anios):
+    """Patrones de archivos (amarillos, verdes) para los anios indicados."""
+    anios = sorted({int(a) for a in anios})
+    return ([f"data/raw/yellow/{a}/*.parquet" for a in anios],
+            [f"data/raw/green/{a}/*.parquet" for a in anios])
+
+
+def fijar_archivos(con, yellow, green) -> None:
+    """Restringe los archivos que leen yellow_raw y green_raw (sql/00_vistas.sql).
+
+    Recibe listas de rutas o patrones relativos a la raiz del repositorio. Las
+    vistas leen la variable cada vez que se consultan, asi que puede llamarse
+    antes o despues de crearlas.
+    """
+    for tipo, archivos in (("yellow", yellow), ("green", green)):
+        lista = [str(a) for a in archivos]
+        if not lista:
+            raise ValueError(f"lista de archivos {tipo} vacia")
+        con.execute(f"SET VARIABLE archivos_{tipo} = ?::VARCHAR[]", [lista])
 
 
 def _memoria_disponible_mb():

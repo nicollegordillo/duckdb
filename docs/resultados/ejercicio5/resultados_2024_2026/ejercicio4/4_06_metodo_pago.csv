@@ -1,0 +1,12 @@
+taxi,payment_type,metodo_pago,viajes,pct_del_tipo,total_prom_usd,pct_con_propina,propina_mediana_pct
+yellow,1,Tarjeta,48230360,71.54,29.86,93.2,26.0
+yellow,0,Flex fare,10724732,15.91,30.0,11.3,0.0
+yellow,2,Efectivo,7755846,11.5,25.3,0.0,0.0
+yellow,4,Disputa,500747,0.74,28.14,0.1,0.0
+yellow,3,Sin cargo,202624,0.3,26.71,0.1,0.0
+green,1,Tarjeta,628740,67.91,25.23,91.4,23.5
+green,2,Efectivo,227863,24.61,20.76,0.0,0.0
+green,,Sin dato,66087,7.14,31.35,38.5,0.0
+green,3,Sin cargo,2266,0.24,15.96,0.3,0.0
+green,4,Disputa,877,0.09,16.1,0.1,0.0
+green,5,Desconocido,18,0.0,21.5,0.0,0.0

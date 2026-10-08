@@ -25,3 +25,6 @@ Thumbs.db
 *.duckdb
 *.duckdb.wal
 .tmp/
+
+# Configuracion local de Docker Compose (p. ej. LAB8_DATA_DIR)
+.env

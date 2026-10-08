@@ -7,7 +7,7 @@
 
 ## Enfoque
 
-Las consultas no leen rutas de archivos sino las vistas de `sql/00_vistas.sql`:
+Las consultas no leen rutas de archivos sino las vistas de `sql/00_vistas.sql` (origen) y `sql/02_vistas_analisis.sql` (análisis; separadas en el Ejercicio 6 sin cambiar su definición):
 
 - `viajes`: amarillos y verdes con un esquema común (columna `taxi` = `yellow` / `green`).
 - `viajes_enriquecidos`: agrega duración, velocidad, % de propina, hora, día de la semana, método de pago y banderas de calidad.

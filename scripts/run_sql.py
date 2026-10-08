@@ -16,6 +16,11 @@ Uso:
     python scripts/run_sql.py ejercicio3
     python scripts/run_sql.py ejercicio4
     python scripts/run_sql.py ejercicio4 --solo 4_05     # una sola consulta
+    python scripts/run_sql.py ejercicio4 --anio 2026     # vistas restringidas a 2026
+
+--anio restringe los anios que leen las vistas (sql/00_vistas.sql). Las
+consultas del Ejercicio 3 leen los Parquet directamente con read_parquet() y no
+se ven afectadas: describen todos los archivos descargados.
 """
 
 import argparse
@@ -37,6 +42,8 @@ def main() -> int:
     parser.add_argument("--solo", help="ejecutar solo los archivos que empiecen con este prefijo")
     parser.add_argument("--max-filas", type=int, default=40,
                         help="filas a mostrar en el Markdown (el CSV lleva todas)")
+    parser.add_argument("--anio", type=int, nargs="+",
+                        help="anios que leen las vistas (por defecto: todos los descargados)")
     args = parser.parse_args()
 
     carpeta = DIR_SQL / args.carpeta
@@ -47,7 +54,7 @@ def main() -> int:
         print(f"No hay archivos .sql en {carpeta}")
         return 1
 
-    con = conectar()
+    con = conectar(anios=args.anio)
     dir_csv = DIR_RESULTADOS / args.carpeta
     dir_csv.mkdir(parents=True, exist_ok=True)
 
@@ -81,7 +88,8 @@ def main() -> int:
         f"# Resultados de sql/{args.carpeta}\n\n"
         f"Generado automaticamente el {dt.datetime.now().isoformat(timespec='seconds')} "
         f"con `python scripts/run_sql.py {args.carpeta}"
-        f"{' --solo ' + args.solo if args.solo else ''}`.\n"
+        f"{' --solo ' + args.solo if args.solo else ''}"
+        f"{' --anio ' + ' '.join(map(str, args.anio)) if args.anio else ''}`.\n"
         f"No editar a mano: volver a ejecutar el script tras cambiar las consultas.\n\n"
         f"DuckDB {duckdb.__version__}\n\n"
     )
