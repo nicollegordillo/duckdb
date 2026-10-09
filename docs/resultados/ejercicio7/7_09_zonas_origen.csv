@@ -1,0 +1,41 @@
+taxi,anio,posicion,borough,zona,viajes,pct_viajes,pct_acumulado
+yellow,2024,1,Queens,JFK Airport,1859144,4.73,4.73
+yellow,2024,2,Manhattan,Upper East Side South,1850368,4.71,9.44
+yellow,2024,3,Manhattan,Midtown Center,1841596,4.69,14.13
+yellow,2024,4,Manhattan,Upper East Side North,1671408,4.25,18.38
+yellow,2024,5,Manhattan,Midtown East,1366843,3.48,21.86
+yellow,2024,6,Manhattan,Times Sq/Theatre District,1324134,3.37,25.23
+yellow,2024,7,Manhattan,Penn Station/Madison Sq West,1308184,3.33,28.56
+yellow,2024,8,Manhattan,Lincoln Square East,1266007,3.22,31.79
+yellow,2024,9,Queens,LaGuardia Airport,1251408,3.19,34.97
+yellow,2024,10,Manhattan,Murray Hill,1128189,2.87,37.84
+yellow,2026,1,Manhattan,Upper East Side South,1247677,4.44,4.44
+yellow,2026,2,Manhattan,Midtown Center,1167569,4.15,8.59
+yellow,2026,3,Queens,JFK Airport,1123325,3.99,12.58
+yellow,2026,4,Manhattan,Upper East Side North,1108262,3.94,16.52
+yellow,2026,5,Manhattan,Penn Station/Madison Sq West,865055,3.08,19.6
+yellow,2026,6,Manhattan,Midtown East,861235,3.06,22.66
+yellow,2026,7,Manhattan,Times Sq/Theatre District,814437,2.9,25.55
+yellow,2026,8,Manhattan,Lincoln Square East,807830,2.87,28.43
+yellow,2026,9,Manhattan,East Village,754380,2.68,31.11
+yellow,2026,10,Manhattan,Murray Hill,735050,2.61,33.72
+green,2024,1,Manhattan,East Harlem North,146032,23.82,23.82
+green,2024,2,Manhattan,East Harlem South,88028,14.36,38.18
+green,2024,3,Manhattan,Morningside Heights,32512,5.3,43.48
+green,2024,4,Manhattan,Central Park,31907,5.2,48.69
+green,2024,5,Queens,Forest Hills,31139,5.08,53.76
+green,2024,6,Queens,Elmhurst,29166,4.76,58.52
+green,2024,7,Manhattan,Central Harlem,27721,4.52,63.04
+green,2024,8,Brooklyn,Fort Greene,19806,3.23,66.27
+green,2024,9,Brooklyn,Downtown Brooklyn/MetroTech,16914,2.76,69.03
+green,2024,10,Queens,Jamaica,14473,2.36,71.39
+green,2026,1,Manhattan,East Harlem North,85757,27.42,27.42
+green,2026,2,Manhattan,East Harlem South,41568,13.29,40.71
+green,2026,3,Queens,Forest Hills,15613,4.99,45.7
+green,2026,4,Manhattan,Central Park,12973,4.15,49.85
+green,2026,5,Manhattan,Morningside Heights,12402,3.97,53.81
+green,2026,6,Queens,Elmhurst,11113,3.55,57.37
+green,2026,7,Manhattan,Central Harlem,10912,3.49,60.85
+green,2026,8,Brooklyn,Downtown Brooklyn/MetroTech,9189,2.94,63.79
+green,2026,9,Queens,Jamaica,8937,2.86,66.65
+green,2026,10,Brooklyn,Fort Greene,7915,2.53,69.18

@@ -44,13 +44,14 @@ duckdb/
 +-- notebooks/
 |
 +-- scripts/
-|   +-- download_data.py      descarga (Ejercicios 2 y 5)
+|   +-- download_data.py      descarga (Ejercicios 2, 5 y 8)
 |   +-- verify_data.py        verificacion de la descarga
 |   +-- run_sql.py            ejecuta y documenta las consultas
-|   +-- compatibilidad.py     consultas anteriores vs. datos ampliados (Ejercicio 5)
+|   +-- compatibilidad.py     consultas anteriores vs. datos ampliados (Ejercicios 5 y 8)
 |   +-- materializar.py       tabla DuckDB a partir de los Parquet (Ejercicio 6)
 |   +-- benchmark.py          Parquet vs. tabla materializada (Ejercicio 6)
 |   +-- perfilar.py           planes y tiempo por operador del benchmark
+|   +-- tablero_metabase.py   construye el tablero de Metabase por API (Ejercicios 7 y 8)
 |   +-- lab.py                utilidades compartidas
 |   +-- verificar_ambiente.py
 |
@@ -58,7 +59,7 @@ duckdb/
 |   +-- 00_vistas.sql         origen: vistas sobre los Parquet (viajes)
 |   +-- 01_zonas.sql
 |   +-- 02_vistas_analisis.sql  viajes_enriquecidos, viajes_validos
-|   +-- ejercicio3/ ... ejercicio6/
+|   +-- ejercicio3/ ... ejercicio8/
 |
 +-- docs/
 |
@@ -200,8 +201,8 @@ docker compose exec lab python scripts/verify_data.py
 - Los archivos quedan en `data/raw/<tipo>/<anio>/` y el catalogo de zonas en
   `data/raw/zonas/`. Cada descarga se registra en `data/raw/manifest.csv`.
 - Los anios por defecto estan en `ANIOS_POR_DEFECTO` dentro del script:
-  **2024 y 2026** desde el Ejercicio 5 (unos 1.2 GB, 40 archivos). Para otros
-  anios: `python scripts/download_data.py --anio 2024 2025 2026`.
+  **2024, 2025 y 2026** desde el Ejercicio 8 (unos 2.0 GB, 64 archivos, 121 M
+  de registros). Para otros anios: `python scripts/download_data.py --anio 2024 2026`.
 - Volver a ejecutar el script es seguro: solo descarga lo que falta o esta
   corrupto. Asi se incorporan los meses que la TLC publique despues.
 - `verify_data.py` compara lo descargado con lo publicado por la TLC y deja el
@@ -335,8 +336,8 @@ docker compose exec lab python scripts/compatibilidad.py --etapa 2026      # lin
 docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio3_exploracion.ipynb
 docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio4_analisis.ipynb
 
-# Ejercicio 5: se agrega 2024 (ANIOS_POR_DEFECTO = 2024, 2026)
-docker compose exec lab python scripts/download_data.py
+# Ejercicio 5: se agrega 2024
+docker compose exec lab python scripts/download_data.py --anio 2024 2026
 docker compose exec lab python scripts/verify_data.py
 docker compose exec lab python scripts/run_sql.py ejercicio5
 docker compose exec lab python scripts/compatibilidad.py --etapa 2024_2026 --guardar-csv
@@ -348,6 +349,24 @@ docker compose exec lab python scripts/materializar.py
 docker compose exec lab python scripts/benchmark.py
 docker compose exec lab python scripts/perfilar.py
 docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio6_benchmark.ipynb
+
+# Ejercicio 7: indicadores (2024 + 2026) y tablero de Metabase
+docker compose exec lab python scripts/run_sql.py ejercicio7 --anio 2024 2026 --tablero
+docker compose start metabase
+docker compose exec lab python scripts/tablero_metabase.py --url http://metabase:3000
+
+# Ejercicio 8: se agrega 2025 (ANIOS_POR_DEFECTO = 2024, 2025, 2026)
+docker compose stop metabase
+docker compose exec lab python scripts/download_data.py
+docker compose exec lab python scripts/verify_data.py
+docker compose exec lab python scripts/compatibilidad.py --etapa 2024_2025_2026 --guardar-csv
+docker compose exec lab python scripts/run_sql.py ejercicio5 --salida ejercicio8/ejercicio5_3_anios
+docker compose exec lab python scripts/run_sql.py ejercicio6 --salida ejercicio8/ejercicio6_3_anios
+docker compose exec lab python scripts/run_sql.py ejercicio7 --salida ejercicio8/indicadores_3_anios --tablero
+docker compose exec lab python scripts/run_sql.py ejercicio8 --tablero
+docker compose start metabase
+docker compose exec lab python scripts/tablero_metabase.py --url http://metabase:3000
+docker compose exec lab jupyter nbconvert --to notebook --execute --inplace notebooks/ejercicio8_evolucion.ipynb
 ```
 
 | Resultado | Archivo |
@@ -356,7 +375,45 @@ docker compose exec lab jupyter nbconvert --to notebook --execute --inplace note
 | Consultas, resultados y tiempos | `docs/resultados/ejercicio3.md` a `docs/resultados/ejercicio5.md` (+ CSV) |
 | Compatibilidad de las consultas al agregar 2024 | `docs/resultados/ejercicio5_compatibilidad.md` |
 | Benchmark Parquet vs. tabla | `docs/resultados/ejercicio6.md` (+ CSV) |
+| Indicadores (2024 + 2026) | `docs/resultados/ejercicio7.md` (+ CSV) |
+| Indicadores y consultas de evolucion (2024-2026) | `docs/resultados/ejercicio8/indicadores_3_anios.md`, `docs/resultados/ejercicio8.md` (+ CSV) |
+| Compatibilidad de las consultas al agregar 2025 | `docs/resultados/ejercicio5_compatibilidad.md` (etapa `2024_2025_2026`) |
+| Tablas del tablero | `data/processed/tablero.duckdb` (se regenera, no esta en Git) |
+| Evidencia del tablero | `docs/figuras/e7_tablero_metabase*.png` |
 | Figuras | `docs/figuras/` |
-| Respuestas e interpretacion | `docs/ejercicio1_ambiente.md` a `docs/ejercicio6_benchmark.md` |
+| Respuestas e interpretacion | `docs/ejercicio1_ambiente.md` a `docs/ejercicio9_discusion.md` |
 
-<!-- Pendiente: agregar Ejercicios 7 a 9. -->
+## Tablero de indicadores (Ejercicios 7 y 8)
+
+El tablero esta en Metabase y se construye con codigo, no a mano:
+
+1. `run_sql.py ejercicio7 --tablero` ejecuta las 12 consultas de `sql/ejercicio7/`
+   y guarda cada resultado como tabla `ind_*` en `data/processed/tablero.duckdb`
+   (unos 6 MB). `run_sql.py ejercicio8 --tablero` agrega las tablas de evolucion.
+2. `tablero_metabase.py` configura Metabase si es la primera vez (usuario
+   `admin@lab8.local`; cambiar con `--email`/`--password` o `LAB8_MB_EMAIL` /
+   `LAB8_MB_PASSWORD`), registra `tablero.duckdb` en modo solo lectura y crea la
+   coleccion "Lab 8 - Indicadores" con el tablero. Volver a ejecutarlo lo
+   reemplaza. `--publico` crea ademas un enlace publico de solo lectura.
+
+Metabase lee tablas de pocas filas en lugar de los 121 M de viajes, asi que el
+tablero carga al instante. Regenerar `tablero.duckdb` con Metabase detenido
+(un archivo DuckDB admite un solo escritor). Filtros: tipo de taxi y anio.
+
+## Resultados principales de los Ejercicios 7 a 9
+
+- **Ejercicio 7** ([docs/ejercicio7_indicadores.md](docs/ejercicio7_indicadores.md)):
+  13 preguntas y 12 indicadores (demanda, precio, movilidad, pago y calidad). El
+  crecimiento de los amarillos se concentra fuera de la hora pico y en Flex Fare;
+  los aeropuertos son ~10 % de los viajes pero ~28 % de la facturacion; mas de la
+  mitad de los pagos con tarjeta deja exactamente 20 % de propina.
+- **Ejercicio 8** ([docs/ejercicio8_2025.md](docs/ejercicio8_2025.md)): 2025 se
+  agrego cambiando una linea; los 40 archivos previos quedaron identicos (SHA-256).
+  Con los tres anios: los amarillos crecieron en 2025 (+13.5 %) y se estancaron
+  en 2026; la zona CBD no se hizo mas lenta al empezar el cobro (la caida de 2026
+  es general); en 2025 hay un problema de captura de montos en Flex Fare del
+  proveedor 2; el aumento del total en 2026 viene de los viajes Flex Fare.
+- **Ejercicio 9** ([docs/ejercicio9_discusion.md](docs/ejercicio9_discusion.md)):
+  discusion sobre DuckDB, Parquet vs. tablas, comparacion medida con pandas (no
+  pudo cargar ni un mes en la maquina usada; DuckDB proceso los 121 M de
+  registros con 2 GB), automatizacion y reproducibilidad.

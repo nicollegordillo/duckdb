@@ -1,0 +1,3 @@
+taxi,q1,q3,limite_inf,limite_sup,viajes,atipicos_altos,atipicos_bajos,distancia_mediana_atipicos_altos,pct_tarifa_especial_en_altos
+yellow,5.68,9.54,-0.13,15.35,111309150,5868330,0,0.57,9.3
+green,5.62,8.21,1.74,12.1,1473773,81205,47346,0.52,25.5

@@ -1,0 +1,3 @@
+tipo,registros,pickup_fuera_del_mes,dropoff_antes_pickup,duracion_cero,duracion_mas_6h,distancia_cero,distancia_mas_100mi,tarifa_negativa,total_negativo,pasajeros_cero,pasajeros_nulos,ratecode_nulo,ratecode_99,pago_tipo_0
+yellow,119595677,780,3820,927677,44254,3131494,5706,3737008,1744900,752775,23419814,23419814,2041064,23419814
+green,1588707,510,1351,1455,6207,71224,516,4879,4971,19575,122983,122983,409,0

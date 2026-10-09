@@ -1,0 +1,257 @@
+taxi,anio,mes,periodo,metodo,viajes,pct
+yellow,2024,1,2024-01-01,Efectivo,417174,14.71
+yellow,2024,1,2024-01-01,Flex fare / sin dato,115126,4.06
+yellow,2024,1,2024-01-01,Otros,32192,1.14
+yellow,2024,1,2024-01-01,Tarjeta,2271731,80.1
+yellow,2024,2,2024-02-01,Efectivo,391111,13.65
+yellow,2024,2,2024-02-01,Flex fare / sin dato,148812,5.19
+yellow,2024,2,2024-02-01,Otros,32675,1.14
+yellow,2024,2,2024-02-01,Tarjeta,2293353,80.02
+yellow,2024,3,2024-03-01,Efectivo,450734,13.26
+yellow,2024,3,2024-03-01,Flex fare / sin dato,364908,10.74
+yellow,2024,3,2024-03-01,Otros,40201,1.18
+yellow,2024,3,2024-03-01,Tarjeta,2542311,74.81
+yellow,2024,4,2024-04-01,Efectivo,443375,13.14
+yellow,2024,4,2024-04-01,Flex fare / sin dato,388202,11.51
+yellow,2024,4,2024-04-01,Otros,38751,1.15
+yellow,2024,4,2024-04-01,Tarjeta,2502862,74.2
+yellow,2024,5,2024-05-01,Efectivo,474003,13.26
+yellow,2024,5,2024-05-01,Flex fare / sin dato,385525,10.78
+yellow,2024,5,2024-05-01,Otros,43219,1.21
+yellow,2024,5,2024-05-01,Tarjeta,2672712,74.75
+yellow,2024,6,2024-06-01,Efectivo,442254,13.04
+yellow,2024,6,2024-06-01,Flex fare / sin dato,387211,11.42
+yellow,2024,6,2024-06-01,Otros,43164,1.27
+yellow,2024,6,2024-06-01,Tarjeta,2518442,74.27
+yellow,2024,7,2024-07-01,Efectivo,427754,14.53
+yellow,2024,7,2024-07-01,Flex fare / sin dato,262817,8.93
+yellow,2024,7,2024-07-01,Otros,44726,1.52
+yellow,2024,7,2024-07-01,Tarjeta,2208138,75.02
+yellow,2024,8,2024-08-01,Efectivo,422175,14.87
+yellow,2024,8,2024-08-01,Flex fare / sin dato,238450,8.4
+yellow,2024,8,2024-08-01,Otros,46654,1.64
+yellow,2024,8,2024-08-01,Tarjeta,2132437,75.09
+yellow,2024,9,2024-09-01,Efectivo,417225,12.09
+yellow,2024,9,2024-09-01,Flex fare / sin dato,430335,12.46
+yellow,2024,9,2024-09-01,Otros,48920,1.42
+yellow,2024,9,2024-09-01,Tarjeta,2555875,74.03
+yellow,2024,10,2024-10-01,Efectivo,447728,12.28
+yellow,2024,10,2024-10-01,Flex fare / sin dato,345116,9.47
+yellow,2024,10,2024-10-01,Otros,53427,1.47
+yellow,2024,10,2024-10-01,Tarjeta,2798574,76.78
+yellow,2024,11,2024-11-01,Efectivo,420798,12.09
+yellow,2024,11,2024-11-01,Flex fare / sin dato,335671,9.65
+yellow,2024,11,2024-11-01,Otros,50545,1.45
+yellow,2024,11,2024-11-01,Tarjeta,2672827,76.81
+yellow,2024,12,2024-12-01,Efectivo,457405,13.12
+yellow,2024,12,2024-12-01,Flex fare / sin dato,289106,8.29
+yellow,2024,12,2024-12-01,Otros,56820,1.63
+yellow,2024,12,2024-12-01,Tarjeta,2683264,76.96
+yellow,2025,1,2025-01-01,Efectivo,363716,11.27
+yellow,2025,1,2025-01-01,Flex fare / sin dato,412918,12.8
+yellow,2025,1,2025-01-01,Otros,47051,1.46
+yellow,2025,1,2025-01-01,Tarjeta,2403095,74.47
+yellow,2025,2,2025-02-01,Efectivo,314726,9.59
+yellow,2025,2,2025-02-01,Flex fare / sin dato,628135,19.13
+yellow,2025,2,2025-02-01,Otros,45991,1.4
+yellow,2025,2,2025-02-01,Tarjeta,2294533,69.88
+yellow,2025,3,2025-03-01,Efectivo,374191,9.84
+yellow,2025,3,2025-03-01,Flex fare / sin dato,725900,19.09
+yellow,2025,3,2025-03-01,Otros,58388,1.54
+yellow,2025,3,2025-03-01,Tarjeta,2644960,69.54
+yellow,2025,4,2025-04-01,Efectivo,378905,10.39
+yellow,2025,4,2025-04-01,Flex fare / sin dato,591360,16.21
+yellow,2025,4,2025-04-01,Otros,61603,1.69
+yellow,2025,4,2025-04-01,Tarjeta,2615755,71.71
+yellow,2025,5,2025-05-01,Efectivo,379612,9.33
+yellow,2025,5,2025-05-01,Flex fare / sin dato,877029,21.56
+yellow,2025,5,2025-05-01,Otros,65790,1.62
+yellow,2025,5,2025-05-01,Tarjeta,2744612,67.48
+yellow,2025,6,2025-06-01,Efectivo,348442,9.06
+yellow,2025,6,2025-06-01,Flex fare / sin dato,936062,24.34
+yellow,2025,6,2025-06-01,Otros,62189,1.62
+yellow,2025,6,2025-06-01,Tarjeta,2498387,64.98
+yellow,2025,7,2025-07-01,Efectivo,347078,9.99
+yellow,2025,7,2025-07-01,Flex fare / sin dato,800656,23.05
+yellow,2025,7,2025-07-01,Otros,64775,1.87
+yellow,2025,7,2025-07-01,Tarjeta,2260664,65.09
+yellow,2025,8,2025-08-01,Efectivo,335412,10.61
+yellow,2025,8,2025-08-01,Flex fare / sin dato,652330,20.63
+yellow,2025,8,2025-08-01,Otros,65688,2.08
+yellow,2025,8,2025-08-01,Tarjeta,2108742,66.69
+yellow,2025,9,2025-09-01,Efectivo,335039,8.78
+yellow,2025,9,2025-09-01,Flex fare / sin dato,827159,21.68
+yellow,2025,9,2025-09-01,Otros,65661,1.72
+yellow,2025,9,2025-09-01,Tarjeta,2586781,67.81
+yellow,2025,10,2025-10-01,Efectivo,363215,9.27
+yellow,2025,10,2025-10-01,Flex fare / sin dato,682300,17.4
+yellow,2025,10,2025-10-01,Otros,58936,1.5
+yellow,2025,10,2025-10-01,Tarjeta,2815691,71.83
+yellow,2025,11,2025-11-01,Efectivo,344147,9.5
+yellow,2025,11,2025-11-01,Flex fare / sin dato,622898,17.2
+yellow,2025,11,2025-11-01,Otros,43848,1.21
+yellow,2025,11,2025-11-01,Tarjeta,2611373,72.09
+yellow,2025,12,2025-12-01,Efectivo,370231,9.19
+yellow,2025,12,2025-12-01,Flex fare / sin dato,1084661,26.92
+yellow,2025,12,2025-12-01,Otros,44918,1.11
+yellow,2025,12,2025-12-01,Tarjeta,2529288,62.78
+yellow,2026,1,2026-01-01,Efectivo,290516,8.3
+yellow,2026,1,2026-01-01,Flex fare / sin dato,994359,28.4
+yellow,2026,1,2026-01-01,Otros,36259,1.04
+yellow,2026,1,2026-01-01,Tarjeta,2179569,62.26
+yellow,2026,2,2026-02-01,Efectivo,253886,7.94
+yellow,2026,2,2026-02-01,Flex fare / sin dato,928080,29.04
+yellow,2026,2,2026-02-01,Otros,25521,0.8
+yellow,2026,2,2026-02-01,Tarjeta,1988877,62.22
+yellow,2026,3,2026-03-01,Efectivo,331980,8.86
+yellow,2026,3,2026-03-01,Flex fare / sin dato,858578,22.91
+yellow,2026,3,2026-03-01,Otros,22763,0.61
+yellow,2026,3,2026-03-01,Tarjeta,2534830,67.63
+yellow,2026,4,2026-04-01,Efectivo,341143,9.32
+yellow,2026,4,2026-04-01,Flex fare / sin dato,738908,20.19
+yellow,2026,4,2026-04-01,Otros,18358,0.5
+yellow,2026,4,2026-04-01,Tarjeta,2562074,69.99
+yellow,2026,5,2026-05-01,Efectivo,351532,9.02
+yellow,2026,5,2026-05-01,Flex fare / sin dato,877711,22.52
+yellow,2026,5,2026-05-01,Otros,18414,0.47
+yellow,2026,5,2026-05-01,Tarjeta,2650057,67.99
+yellow,2026,6,2026-06-01,Efectivo,337123,9.28
+yellow,2026,6,2026-06-01,Flex fare / sin dato,921067,25.35
+yellow,2026,6,2026-06-01,Otros,17319,0.48
+yellow,2026,6,2026-06-01,Tarjeta,2358399,64.9
+yellow,2026,7,2026-07-01,Efectivo,326494,9.79
+yellow,2026,7,2026-07-01,Flex fare / sin dato,876702,26.28
+yellow,2026,7,2026-07-01,Otros,16893,0.51
+yellow,2026,7,2026-07-01,Tarjeta,2115589,63.42
+yellow,2026,8,2026-08-01,Efectivo,311436,9.87
+yellow,2026,8,2026-08-01,Flex fare / sin dato,838048,26.57
+yellow,2026,8,2026-08-01,Otros,16550,0.52
+yellow,2026,8,2026-08-01,Tarjeta,1988439,63.04
+green,2024,1,2024-01-01,Efectivo,15101,28.68
+green,2024,1,2024-01-01,Flex fare / sin dato,3266,6.2
+green,2024,1,2024-01-01,Otros,249,0.47
+green,2024,1,2024-01-01,Tarjeta,34046,64.65
+green,2024,2,2024-02-01,Efectivo,13976,28.08
+green,2024,2,2024-02-01,Flex fare / sin dato,2829,5.68
+green,2024,2,2024-02-01,Otros,203,0.41
+green,2024,2,2024-02-01,Tarjeta,32763,65.83
+green,2024,3,2024-03-01,Efectivo,15870,29.7
+green,2024,3,2024-03-01,Flex fare / sin dato,2040,3.82
+green,2024,3,2024-03-01,Otros,190,0.36
+green,2024,3,2024-03-01,Tarjeta,35327,66.12
+green,2024,4,2024-04-01,Efectivo,14202,27.1
+green,2024,4,2024-04-01,Flex fare / sin dato,1931,3.68
+green,2024,4,2024-04-01,Otros,190,0.36
+green,2024,4,2024-04-01,Tarjeta,36081,68.85
+green,2024,5,2024-05-01,Efectivo,15476,27.24
+green,2024,5,2024-05-01,Flex fare / sin dato,1837,3.23
+green,2024,5,2024-05-01,Otros,230,0.4
+green,2024,5,2024-05-01,Tarjeta,39271,69.12
+green,2024,6,2024-06-01,Efectivo,13792,27.02
+green,2024,6,2024-06-01,Flex fare / sin dato,1825,3.58
+green,2024,6,2024-06-01,Otros,195,0.38
+green,2024,6,2024-06-01,Tarjeta,35236,69.03
+green,2024,7,2024-07-01,Efectivo,13123,27.4
+green,2024,7,2024-07-01,Flex fare / sin dato,1540,3.22
+green,2024,7,2024-07-01,Otros,191,0.4
+green,2024,7,2024-07-01,Tarjeta,33043,68.99
+green,2024,8,2024-08-01,Efectivo,12997,27.09
+green,2024,8,2024-08-01,Flex fare / sin dato,1529,3.19
+green,2024,8,2024-08-01,Otros,199,0.41
+green,2024,8,2024-08-01,Tarjeta,33246,69.3
+green,2024,9,2024-09-01,Efectivo,13137,25.99
+green,2024,9,2024-09-01,Flex fare / sin dato,1640,3.24
+green,2024,9,2024-09-01,Otros,161,0.32
+green,2024,9,2024-09-01,Tarjeta,35607,70.45
+green,2024,10,2024-10-01,Efectivo,13483,25.71
+green,2024,10,2024-10-01,Flex fare / sin dato,1577,3.01
+green,2024,10,2024-10-01,Otros,187,0.36
+green,2024,10,2024-10-01,Tarjeta,37200,70.93
+green,2024,11,2024-11-01,Efectivo,12241,25.34
+green,2024,11,2024-11-01,Flex fare / sin dato,1514,3.13
+green,2024,11,2024-11-01,Otros,158,0.33
+green,2024,11,2024-11-01,Tarjeta,34393,71.2
+green,2024,12,2024-12-01,Efectivo,12763,25.64
+green,2024,12,2024-12-01,Flex fare / sin dato,1895,3.81
+green,2024,12,2024-12-01,Otros,178,0.36
+green,2024,12,2024-12-01,Tarjeta,34946,70.2
+green,2025,1,2025-01-01,Efectivo,10864,24.4
+green,2025,1,2025-01-01,Flex fare / sin dato,1753,3.94
+green,2025,1,2025-01-01,Otros,145,0.33
+green,2025,1,2025-01-01,Tarjeta,31765,71.34
+green,2025,2,2025-02-01,Efectivo,10025,23.44
+green,2025,2,2025-02-01,Flex fare / sin dato,2022,4.73
+green,2025,2,2025-02-01,Otros,170,0.4
+green,2025,2,2025-02-01,Tarjeta,30543,71.43
+green,2025,3,2025-03-01,Efectivo,11484,24.43
+green,2025,3,2025-03-01,Flex fare / sin dato,2771,5.9
+green,2025,3,2025-03-01,Otros,185,0.39
+green,2025,3,2025-03-01,Tarjeta,32560,69.28
+green,2025,4,2025-04-01,Efectivo,11075,23.35
+green,2025,4,2025-04-01,Flex fare / sin dato,2459,5.18
+green,2025,4,2025-04-01,Otros,134,0.28
+green,2025,4,2025-04-01,Tarjeta,33767,71.19
+green,2025,5,2025-05-01,Efectivo,11478,22.6
+green,2025,5,2025-05-01,Flex fare / sin dato,2620,5.16
+green,2025,5,2025-05-01,Otros,199,0.39
+green,2025,5,2025-05-01,Tarjeta,36490,71.85
+green,2025,6,2025-06-01,Efectivo,10562,23.13
+green,2025,6,2025-06-01,Flex fare / sin dato,3056,6.69
+green,2025,6,2025-06-01,Otros,149,0.33
+green,2025,6,2025-06-01,Tarjeta,31900,69.85
+green,2025,7,2025-07-01,Efectivo,10111,22.38
+green,2025,7,2025-07-01,Flex fare / sin dato,4775,10.57
+green,2025,7,2025-07-01,Otros,137,0.3
+green,2025,7,2025-07-01,Tarjeta,30149,66.74
+green,2025,8,2025-08-01,Efectivo,9885,22.79
+green,2025,8,2025-08-01,Flex fare / sin dato,4412,10.17
+green,2025,8,2025-08-01,Otros,134,0.31
+green,2025,8,2025-08-01,Tarjeta,28936,66.72
+green,2025,9,2025-09-01,Efectivo,9522,20.69
+green,2025,9,2025-09-01,Flex fare / sin dato,5014,10.89
+green,2025,9,2025-09-01,Otros,98,0.21
+green,2025,9,2025-09-01,Tarjeta,31394,68.21
+green,2025,10,2025-10-01,Efectivo,9421,20.34
+green,2025,10,2025-10-01,Flex fare / sin dato,4560,9.85
+green,2025,10,2025-10-01,Otros,115,0.25
+green,2025,10,2025-10-01,Tarjeta,32217,69.56
+green,2025,11,2025-11-01,Efectivo,8818,20.09
+green,2025,11,2025-11-01,Flex fare / sin dato,5011,11.42
+green,2025,11,2025-11-01,Otros,131,0.3
+green,2025,11,2025-11-01,Tarjeta,29936,68.2
+green,2025,12,2025-12-01,Efectivo,9587,21.32
+green,2025,12,2025-12-01,Flex fare / sin dato,5190,11.54
+green,2025,12,2025-12-01,Otros,134,0.3
+green,2025,12,2025-12-01,Tarjeta,30059,66.84
+green,2026,1,2026-01-01,Efectivo,7858,20.92
+green,2026,1,2026-01-01,Flex fare / sin dato,4803,12.79
+green,2026,1,2026-01-01,Otros,118,0.31
+green,2026,1,2026-01-01,Tarjeta,24788,65.98
+green,2026,2,2026-02-01,Efectivo,7006,20.25
+green,2026,2,2026-02-01,Flex fare / sin dato,4762,13.77
+green,2026,2,2026-02-01,Otros,112,0.32
+green,2026,2,2026-02-01,Tarjeta,22713,65.66
+green,2026,3,2026-03-01,Efectivo,8064,19.59
+green,2026,3,2026-03-01,Flex fare / sin dato,5887,14.3
+green,2026,3,2026-03-01,Otros,116,0.28
+green,2026,3,2026-03-01,Tarjeta,27087,65.82
+green,2026,4,2026-04-01,Efectivo,7949,19.35
+green,2026,4,2026-04-01,Flex fare / sin dato,5577,13.57
+green,2026,4,2026-04-01,Otros,109,0.27
+green,2026,4,2026-04-01,Tarjeta,27450,66.81
+green,2026,5,2026-05-01,Efectivo,8376,20.04
+green,2026,5,2026-05-01,Flex fare / sin dato,5010,11.99
+green,2026,5,2026-05-01,Otros,85,0.2
+green,2026,5,2026-05-01,Tarjeta,28323,67.77
+green,2026,6,2026-06-01,Efectivo,7944,19.37
+green,2026,6,2026-06-01,Flex fare / sin dato,5620,13.7
+green,2026,6,2026-06-01,Otros,102,0.25
+green,2026,6,2026-06-01,Tarjeta,27345,66.68
+green,2026,7,2026-07-01,Efectivo,7029,18.49
+green,2026,7,2026-07-01,Flex fare / sin dato,5529,14.54
+green,2026,7,2026-07-01,Otros,100,0.26
+green,2026,7,2026-07-01,Tarjeta,25361,66.71
+green,2026,8,2026-08-01,Efectivo,7476,19.91
+green,2026,8,2026-08-01,Flex fare / sin dato,5476,14.58
+green,2026,8,2026-08-01,Otros,88,0.23
+green,2026,8,2026-08-01,Tarjeta,24514,65.28

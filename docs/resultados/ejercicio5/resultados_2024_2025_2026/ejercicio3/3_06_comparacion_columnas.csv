@@ -1,0 +1,26 @@
+columna,tipo_yellow,tipo_green,estado
+DOLocationID,INTEGER,INTEGER,comun
+PULocationID,INTEGER,INTEGER,comun
+RatecodeID,BIGINT,BIGINT,comun
+VendorID,INTEGER,INTEGER,comun
+cbd_congestion_fee,DOUBLE,DOUBLE,comun
+congestion_surcharge,DOUBLE,DOUBLE,comun
+extra,DOUBLE,DOUBLE,comun
+fare_amount,DOUBLE,DOUBLE,comun
+improvement_surcharge,DOUBLE,DOUBLE,comun
+mta_tax,DOUBLE,DOUBLE,comun
+passenger_count,BIGINT,BIGINT,comun
+payment_type,BIGINT,BIGINT,comun
+request_source,VARCHAR,VARCHAR,comun
+store_and_fwd_flag,VARCHAR,VARCHAR,comun
+tip_amount,DOUBLE,DOUBLE,comun
+tolls_amount,DOUBLE,DOUBLE,comun
+total_amount,DOUBLE,DOUBLE,comun
+trip_distance,DOUBLE,DOUBLE,comun
+ehail_fee,,DOUBLE,solo green
+lpep_dropoff_datetime,,TIMESTAMP,solo green
+lpep_pickup_datetime,,TIMESTAMP,solo green
+trip_type,,BIGINT,solo green
+Airport_fee,DOUBLE,,solo yellow
+tpep_dropoff_datetime,TIMESTAMP,,solo yellow
+tpep_pickup_datetime,TIMESTAMP,,solo yellow

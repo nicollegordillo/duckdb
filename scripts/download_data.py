@@ -47,9 +47,10 @@ import requests
 
 # --- Configuracion -----------------------------------------------------------
 # Para incorporar un anio nuevo basta con agregarlo aqui (o pasarlo con --anio).
-# Ejercicio 2: 2026. Ejercicio 5: se agrega 2024 (los archivos de 2026 ya
-# descargados se conservan y no se vuelven a descargar).
-ANIOS_POR_DEFECTO = (2024, 2026)
+# Ejercicio 2: 2026. Ejercicio 5: se agrega 2024. Ejercicio 8: se agrega 2025
+# (en cada caso los archivos ya descargados se conservan y no se vuelven a
+# descargar).
+ANIOS_POR_DEFECTO = (2024, 2025, 2026)
 TIPOS_TAXI = ("yellow", "green")
 
 URL_BASE = "https://d37ci6vzurychx.cloudfront.net/trip-data"

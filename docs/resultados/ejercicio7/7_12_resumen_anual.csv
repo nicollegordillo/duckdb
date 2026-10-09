@@ -1,0 +1,5 @@
+taxi,anio,meses,viajes,viajes_por_dia,total_mediano,distancia_mediana,duracion_mediana,mph_mediana,pct_tarjeta,pct_flex_sin_dato,pct_con_cargo_cbd
+yellow,2024,1-8,25223199,103374.0,20.96,1.8,12.7,9.52,75.9,9.1,
+yellow,2026,1-8,28127474,115751.0,23.62,1.93,14.1,9.27,65.3,25.0,72.4
+green,2024,1-8,411994,1689.0,19.09,1.96,11.9,10.39,67.7,4.1,
+green,2026,1-8,312777,1287.0,20.5,2.13,13.2,10.05,66.4,13.6,8.5

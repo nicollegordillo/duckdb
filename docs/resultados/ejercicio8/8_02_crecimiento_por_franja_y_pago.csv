@@ -1,0 +1,61 @@
+taxi,anio,franja,pago,viajes,viajes_por_dia
+yellow,2024,1 Madrugada (0-5 h),Flex fare / sin dato,326421.0,1338.0
+yellow,2025,1 Madrugada (0-5 h),Flex fare / sin dato,943492.0,3883.0
+yellow,2026,1 Madrugada (0-5 h),Flex fare / sin dato,1211793.0,4987.0
+yellow,2024,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",1667079.0,6832.0
+yellow,2025,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",1623535.0,6681.0
+yellow,2026,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",1478255.0,6083.0
+yellow,2024,2 Manana (6-9 h),Flex fare / sin dato,332701.0,1364.0
+yellow,2025,2 Manana (6-9 h),Flex fare / sin dato,878798.0,3616.0
+yellow,2026,2 Manana (6-9 h),Flex fare / sin dato,1179397.0,4853.0
+yellow,2024,2 Manana (6-9 h),"Tarjeta, efectivo y otros",2742668.0,11240.0
+yellow,2025,2 Manana (6-9 h),"Tarjeta, efectivo y otros",2658058.0,10939.0
+yellow,2026,2 Manana (6-9 h),"Tarjeta, efectivo y otros",2506516.0,10315.0
+yellow,2024,3 Dia (10-15 h),Flex fare / sin dato,466646.0,1912.0
+yellow,2025,3 Dia (10-15 h),Flex fare / sin dato,1216673.0,5007.0
+yellow,2026,3 Dia (10-15 h),Flex fare / sin dato,1600164.0,6585.0
+yellow,2024,3 Dia (10-15 h),"Tarjeta, efectivo y otros",7706811.0,31585.0
+yellow,2025,3 Dia (10-15 h),"Tarjeta, efectivo y otros",7685858.0,31629.0
+yellow,2026,3 Dia (10-15 h),"Tarjeta, efectivo y otros",7097393.0,29207.0
+yellow,2024,4 Tarde (16-19 h),Flex fare / sin dato,525117.0,2152.0
+yellow,2025,4 Tarde (16-19 h),Flex fare / sin dato,993826.0,4090.0
+yellow,2026,4 Tarde (16-19 h),Flex fare / sin dato,1111754.0,4575.0
+yellow,2024,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",6136360.0,25149.0
+yellow,2025,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",6229053.0,25634.0
+yellow,2026,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",5729514.0,23578.0
+yellow,2024,5 Noche (20-23 h),Flex fare / sin dato,640166.0,2624.0
+yellow,2025,5 Noche (20-23 h),Flex fare / sin dato,1591601.0,6550.0
+yellow,2026,5 Noche (20-23 h),Flex fare / sin dato,1930345.0,7944.0
+yellow,2024,5 Noche (20-23 h),"Tarjeta, efectivo y otros",4679230.0,19177.0
+yellow,2025,5 Noche (20-23 h),"Tarjeta, efectivo y otros",4687801.0,19291.0
+yellow,2026,5 Noche (20-23 h),"Tarjeta, efectivo y otros",4282343.0,17623.0
+green,2024,1 Madrugada (0-5 h),Flex fare / sin dato,1017.0,4.0
+green,2025,1 Madrugada (0-5 h),Flex fare / sin dato,1179.0,5.0
+green,2026,1 Madrugada (0-5 h),Flex fare / sin dato,2178.0,9.0
+green,2024,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",22238.0,91.0
+green,2025,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",17462.0,72.0
+green,2026,1 Madrugada (0-5 h),"Tarjeta, efectivo y otros",13110.0,54.0
+green,2024,2 Manana (6-9 h),Flex fare / sin dato,3779.0,15.0
+green,2025,2 Manana (6-9 h),Flex fare / sin dato,5813.0,24.0
+green,2026,2 Manana (6-9 h),Flex fare / sin dato,10454.0,43.0
+green,2024,2 Manana (6-9 h),"Tarjeta, efectivo y otros",57637.0,236.0
+green,2025,2 Manana (6-9 h),"Tarjeta, efectivo y otros",51961.0,214.0
+green,2026,2 Manana (6-9 h),"Tarjeta, efectivo y otros",43482.0,179.0
+green,2024,3 Dia (10-15 h),Flex fare / sin dato,6481.0,27.0
+green,2025,3 Dia (10-15 h),Flex fare / sin dato,10411.0,43.0
+green,2026,3 Dia (10-15 h),Flex fare / sin dato,19239.0,79.0
+green,2024,3 Dia (10-15 h),"Tarjeta, efectivo y otros",136012.0,557.0
+green,2025,3 Dia (10-15 h),"Tarjeta, efectivo y otros",117613.0,484.0
+green,2026,3 Dia (10-15 h),"Tarjeta, efectivo y otros",92599.0,381.0
+green,2024,4 Tarde (16-19 h),Flex fare / sin dato,3973.0,16.0
+green,2025,4 Tarde (16-19 h),Flex fare / sin dato,4748.0,20.0
+green,2026,4 Tarde (16-19 h),Flex fare / sin dato,7906.0,33.0
+green,2024,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",118728.0,487.0
+green,2025,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",103643.0,427.0
+green,2026,4 Tarde (16-19 h),"Tarjeta, efectivo y otros",80822.0,333.0
+green,2024,5 Noche (20-23 h),Flex fare / sin dato,1547.0,6.0
+green,2025,5 Noche (20-23 h),Flex fare / sin dato,1717.0,7.0
+green,2026,5 Noche (20-23 h),Flex fare / sin dato,2887.0,12.0
+green,2024,5 Noche (20-23 h),"Tarjeta, efectivo y otros",60582.0,248.0
+green,2025,5 Noche (20-23 h),"Tarjeta, efectivo y otros",52168.0,215.0
+green,2026,5 Noche (20-23 h),"Tarjeta, efectivo y otros",40100.0,165.0

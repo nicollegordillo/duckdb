@@ -1,0 +1,25 @@
+taxi,anio,aeropuerto,viajes,pct_viajes,pct_facturacion,total_mediano
+yellow,2024,JFK Airport,2206469,5.62,16.48,89.92
+yellow,2024,LaGuardia Airport,1678277,4.27,10.26,68.79
+yellow,2024,Newark Airport,100876,0.26,1.15,127.25
+yellow,2024,Sin aeropuerto,35301213,89.86,72.11,20.08
+yellow,2025,JFK Airport,2193054,5.0,14.44,89.76
+yellow,2025,LaGuardia Airport,1622795,3.7,9.01,69.38
+yellow,2025,Newark Airport,82813,0.19,0.86,130.11
+yellow,2025,Sin aeropuerto,39996179,91.12,75.69,21.03
+yellow,2026,JFK Airport,1304595,4.64,12.48,89.13
+yellow,2026,LaGuardia Airport,946250,3.36,7.82,69.96
+yellow,2026,Newark Airport,48462,0.17,0.76,131.71
+yellow,2026,Sin aeropuerto,25828167,91.83,78.94,22.46
+green,2024,JFK Airport,5709,0.93,2.67,72.71
+green,2024,LaGuardia Airport,19779,3.23,5.15,32.56
+green,2024,Newark Airport,380,0.06,0.37,143.83
+green,2024,Sin aeropuerto,587206,95.78,91.81,18.76
+green,2025,JFK Airport,4724,0.86,2.41,76.06
+green,2025,LaGuardia Airport,15506,2.83,4.54,33.84
+green,2025,Newark Airport,287,0.05,0.31,145.9
+green,2025,Sin aeropuerto,527405,96.26,92.73,19.59
+green,2026,JFK Airport,2241,0.72,2.0,73.36
+green,2026,LaGuardia Airport,8287,2.65,4.22,33.79
+green,2026,Newark Airport,162,0.05,0.3,145.79
+green,2026,Sin aeropuerto,302087,96.58,93.48,20.06

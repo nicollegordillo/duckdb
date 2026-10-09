@@ -1,0 +1,13 @@
+tipo,columna,anio,nombres,tipos_parquet,en_archivos,archivos_del_anio
+yellow,cbd_congestion_fee,2024,(no existe),,0,12
+yellow,cbd_congestion_fee,2025,cbd_congestion_fee,DOUBLE,12,12
+yellow,cbd_congestion_fee,2026,cbd_congestion_fee,DOUBLE,8,8
+yellow,request_source,2024,(no existe),,0,12
+yellow,request_source,2025,(no existe),,0,12
+yellow,request_source,2026,request_source,BYTE_ARRAY (UTF8),3,8
+green,cbd_congestion_fee,2024,(no existe),,0,12
+green,cbd_congestion_fee,2025,cbd_congestion_fee,DOUBLE,12,12
+green,cbd_congestion_fee,2026,cbd_congestion_fee,DOUBLE,8,8
+green,request_source,2024,(no existe),,0,12
+green,request_source,2025,(no existe),,0,12
+green,request_source,2026,request_source,BYTE_ARRAY (UTF8),3,8

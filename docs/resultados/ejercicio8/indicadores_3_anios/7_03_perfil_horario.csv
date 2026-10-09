@@ -1,0 +1,289 @@
+taxi,anio,tipo_dia,serie,hora,viajes,dias,viajes_promedio,pct_del_dia
+yellow,2024,Laborable,2024 - Laborable,0,533904.0,262,2037.8,1.89
+yellow,2024,Laborable,2024 - Laborable,1,254716.0,262,972.2,0.9
+yellow,2024,Laborable,2024 - Laborable,2,137922.0,262,526.4,0.49
+yellow,2024,Laborable,2024 - Laborable,3,91449.0,262,349.0,0.32
+yellow,2024,Laborable,2024 - Laborable,4,100280.0,262,382.7,0.35
+yellow,2024,Laborable,2024 - Laborable,5,188451.0,262,719.3,0.67
+yellow,2024,Laborable,2024 - Laborable,6,462786.0,262,1766.4,1.63
+yellow,2024,Laborable,2024 - Laborable,7,945957.0,262,3610.5,3.34
+yellow,2024,Laborable,2024 - Laborable,8,1282233.0,262,4894.0,4.53
+yellow,2024,Laborable,2024 - Laborable,9,1303934.0,262,4976.8,4.61
+yellow,2024,Laborable,2024 - Laborable,10,1308521.0,262,4994.4,4.62
+yellow,2024,Laborable,2024 - Laborable,11,1378643.0,262,5262.0,4.87
+yellow,2024,Laborable,2024 - Laborable,12,1481812.0,262,5655.8,5.23
+yellow,2024,Laborable,2024 - Laborable,13,1534746.0,262,5857.8,5.42
+yellow,2024,Laborable,2024 - Laborable,14,1683114.0,262,6424.1,5.95
+yellow,2024,Laborable,2024 - Laborable,15,1752840.0,262,6690.2,6.19
+yellow,2024,Laborable,2024 - Laborable,16,1749311.0,262,6676.8,6.18
+yellow,2024,Laborable,2024 - Laborable,17,1966853.0,262,7507.1,6.95
+yellow,2024,Laborable,2024 - Laborable,18,2097161.0,262,8004.4,7.41
+yellow,2024,Laborable,2024 - Laborable,19,1822446.0,262,6955.9,6.44
+yellow,2024,Laborable,2024 - Laborable,20,1702461.0,262,6497.9,6.01
+yellow,2024,Laborable,2024 - Laborable,21,1768934.0,262,6751.7,6.25
+yellow,2024,Laborable,2024 - Laborable,22,1599635.0,262,6105.5,5.65
+yellow,2024,Laborable,2024 - Laborable,23,1162614.0,262,4437.5,4.11
+yellow,2024,Fin de semana,2024 - Fin de semana,0,599778.0,104,5767.1,5.46
+yellow,2024,Fin de semana,2024 - Fin de semana,1,477558.0,104,4591.9,4.35
+yellow,2024,Fin de semana,2024 - Fin de semana,2,336945.0,104,3239.9,3.07
+yellow,2024,Fin de semana,2024 - Fin de semana,3,218116.0,104,2097.3,1.99
+yellow,2024,Fin de semana,2024 - Fin de semana,4,124940.0,104,1201.3,1.14
+yellow,2024,Fin de semana,2024 - Fin de semana,5,58280.0,104,560.4,0.53
+yellow,2024,Fin de semana,2024 - Fin de semana,6,92808.0,104,892.4,0.85
+yellow,2024,Fin de semana,2024 - Fin de semana,7,137139.0,104,1318.6,1.25
+yellow,2024,Fin de semana,2024 - Fin de semana,8,215109.0,104,2068.4,1.96
+yellow,2024,Fin de semana,2024 - Fin de semana,9,335884.0,104,3229.7,3.06
+yellow,2024,Fin de semana,2024 - Fin de semana,10,449638.0,104,4323.4,4.1
+yellow,2024,Fin de semana,2024 - Fin de semana,11,531943.0,104,5114.8,4.85
+yellow,2024,Fin de semana,2024 - Fin de semana,12,605414.0,104,5821.3,5.52
+yellow,2024,Fin de semana,2024 - Fin de semana,13,635711.0,104,6112.6,5.79
+yellow,2024,Fin de semana,2024 - Fin de semana,14,645239.0,104,6204.2,5.88
+yellow,2024,Fin de semana,2024 - Fin de semana,15,652584.0,104,6274.8,5.95
+yellow,2024,Fin de semana,2024 - Fin de semana,16,681624.0,104,6554.1,6.21
+yellow,2024,Fin de semana,2024 - Fin de semana,17,697815.0,104,6709.8,6.36
+yellow,2024,Fin de semana,2024 - Fin de semana,18,698966.0,104,6720.8,6.37
+yellow,2024,Fin de semana,2024 - Fin de semana,19,647261.0,104,6223.7,5.9
+yellow,2024,Fin de semana,2024 - Fin de semana,20,561866.0,104,5402.6,5.12
+yellow,2024,Fin de semana,2024 - Fin de semana,21,542825.0,104,5219.5,4.95
+yellow,2024,Fin de semana,2024 - Fin de semana,22,537754.0,104,5170.7,4.9
+yellow,2024,Fin de semana,2024 - Fin de semana,23,490915.0,104,4720.3,4.47
+yellow,2025,Laborable,2025 - Laborable,0,634844.0,261,2432.4,2.03
+yellow,2025,Laborable,2025 - Laborable,1,320695.0,261,1228.7,1.03
+yellow,2025,Laborable,2025 - Laborable,2,177863.0,261,681.5,0.57
+yellow,2025,Laborable,2025 - Laborable,3,119941.0,261,459.5,0.38
+yellow,2025,Laborable,2025 - Laborable,4,137989.0,261,528.7,0.44
+yellow,2025,Laborable,2025 - Laborable,5,247941.0,261,950.0,0.79
+yellow,2025,Laborable,2025 - Laborable,6,560323.0,261,2146.8,1.8
+yellow,2025,Laborable,2025 - Laborable,7,1094271.0,261,4192.6,3.51
+yellow,2025,Laborable,2025 - Laborable,8,1457593.0,261,5584.6,4.67
+yellow,2025,Laborable,2025 - Laborable,9,1456275.0,261,5579.6,4.67
+yellow,2025,Laborable,2025 - Laborable,10,1429422.0,261,5476.7,4.58
+yellow,2025,Laborable,2025 - Laborable,11,1487659.0,261,5699.8,4.77
+yellow,2025,Laborable,2025 - Laborable,12,1599443.0,261,6128.1,5.13
+yellow,2025,Laborable,2025 - Laborable,13,1664021.0,261,6375.6,5.33
+yellow,2025,Laborable,2025 - Laborable,14,1822073.0,261,6981.1,5.84
+yellow,2025,Laborable,2025 - Laborable,15,1915461.0,261,7338.9,6.14
+yellow,2025,Laborable,2025 - Laborable,16,1831715.0,261,7018.1,5.87
+yellow,2025,Laborable,2025 - Laborable,17,2063135.0,261,7904.7,6.61
+yellow,2025,Laborable,2025 - Laborable,18,2161013.0,261,8279.7,6.93
+yellow,2025,Laborable,2025 - Laborable,19,1932887.0,261,7405.7,6.19
+yellow,2025,Laborable,2025 - Laborable,20,1933199.0,261,7406.9,6.2
+yellow,2025,Laborable,2025 - Laborable,21,2006218.0,261,7686.7,6.43
+yellow,2025,Laborable,2025 - Laborable,22,1816704.0,261,6960.6,5.82
+yellow,2025,Laborable,2025 - Laborable,23,1332011.0,261,5103.5,4.27
+yellow,2025,Fin de semana,2025 - Fin de semana,0,739962.0,104,7115.0,5.83
+yellow,2025,Fin de semana,2025 - Fin de semana,1,582659.0,104,5602.5,4.59
+yellow,2025,Fin de semana,2025 - Fin de semana,2,414116.0,104,3981.9,3.26
+yellow,2025,Fin de semana,2025 - Fin de semana,3,282243.0,104,2713.9,2.22
+yellow,2025,Fin de semana,2025 - Fin de semana,4,181360.0,104,1743.8,1.43
+yellow,2025,Fin de semana,2025 - Fin de semana,5,95100.0,104,914.4,0.75
+yellow,2025,Fin de semana,2025 - Fin de semana,6,124900.0,104,1201.0,0.98
+yellow,2025,Fin de semana,2025 - Fin de semana,7,170042.0,104,1635.0,1.34
+yellow,2025,Fin de semana,2025 - Fin de semana,8,252958.0,104,2432.3,1.99
+yellow,2025,Fin de semana,2025 - Fin de semana,9,382826.0,104,3681.0,3.02
+yellow,2025,Fin de semana,2025 - Fin de semana,10,501352.0,104,4820.7,3.95
+yellow,2025,Fin de semana,2025 - Fin de semana,11,584253.0,104,5617.8,4.6
+yellow,2025,Fin de semana,2025 - Fin de semana,12,654210.0,104,6290.5,5.15
+yellow,2025,Fin de semana,2025 - Fin de semana,13,695842.0,104,6690.8,5.48
+yellow,2025,Fin de semana,2025 - Fin de semana,14,709785.0,104,6824.9,5.59
+yellow,2025,Fin de semana,2025 - Fin de semana,15,716297.0,104,6887.5,5.64
+yellow,2025,Fin de semana,2025 - Fin de semana,16,747185.0,104,7184.5,5.89
+yellow,2025,Fin de semana,2025 - Fin de semana,17,775614.0,104,7457.8,6.11
+yellow,2025,Fin de semana,2025 - Fin de semana,18,795998.0,104,7653.8,6.27
+yellow,2025,Fin de semana,2025 - Fin de semana,19,741002.0,104,7125.0,5.84
+yellow,2025,Fin de semana,2025 - Fin de semana,20,650222.0,104,6252.1,5.12
+yellow,2025,Fin de semana,2025 - Fin de semana,21,640122.0,104,6155.0,5.04
+yellow,2025,Fin de semana,2025 - Fin de semana,22,651920.0,104,6268.5,5.14
+yellow,2025,Fin de semana,2025 - Fin de semana,23,602177.0,104,5790.2,4.74
+yellow,2026,Laborable,2026 - Laborable,0,424211.0,173,2452.1,2.13
+yellow,2026,Laborable,2026 - Laborable,1,222776.0,173,1287.7,1.12
+yellow,2026,Laborable,2026 - Laborable,2,126677.0,173,732.2,0.64
+yellow,2026,Laborable,2026 - Laborable,3,88342.0,173,510.6,0.44
+yellow,2026,Laborable,2026 - Laborable,4,102833.0,173,594.4,0.52
+yellow,2026,Laborable,2026 - Laborable,5,192328.0,173,1111.7,0.97
+yellow,2026,Laborable,2026 - Laborable,6,401974.0,173,2323.5,2.02
+yellow,2026,Laborable,2026 - Laborable,7,740900.0,173,4282.7,3.72
+yellow,2026,Laborable,2026 - Laborable,8,982259.0,173,5677.8,4.93
+yellow,2026,Laborable,2026 - Laborable,9,951442.0,173,5499.7,4.78
+yellow,2026,Laborable,2026 - Laborable,10,899320.0,173,5198.4,4.52
+yellow,2026,Laborable,2026 - Laborable,11,936274.0,173,5412.0,4.7
+yellow,2026,Laborable,2026 - Laborable,12,996849.0,173,5762.1,5.01
+yellow,2026,Laborable,2026 - Laborable,13,1033971.0,173,5976.7,5.19
+yellow,2026,Laborable,2026 - Laborable,14,1149902.0,173,6646.8,5.78
+yellow,2026,Laborable,2026 - Laborable,15,1208104.0,173,6983.3,6.07
+yellow,2026,Laborable,2026 - Laborable,16,1122290.0,173,6487.2,5.64
+yellow,2026,Laborable,2026 - Laborable,17,1270441.0,173,7343.6,6.38
+yellow,2026,Laborable,2026 - Laborable,18,1316058.0,173,7607.3,6.61
+yellow,2026,Laborable,2026 - Laborable,19,1184684.0,173,6847.9,5.95
+yellow,2026,Laborable,2026 - Laborable,20,1230425.0,173,7112.3,6.18
+yellow,2026,Laborable,2026 - Laborable,21,1296580.0,173,7494.7,6.51
+yellow,2026,Laborable,2026 - Laborable,22,1162861.0,173,6721.7,5.84
+yellow,2026,Laborable,2026 - Laborable,23,865050.0,173,5000.3,4.35
+yellow,2026,Fin de semana,2026 - Fin de semana,0,480893.0,70,6869.9,5.85
+yellow,2026,Fin de semana,2026 - Fin de semana,1,378310.0,70,5404.4,4.6
+yellow,2026,Fin de semana,2026 - Fin de semana,2,273342.0,70,3904.9,3.32
+yellow,2026,Fin de semana,2026 - Fin de semana,3,199148.0,70,2845.0,2.42
+yellow,2026,Fin de semana,2026 - Fin de semana,4,132677.0,70,1895.4,1.61
+yellow,2026,Fin de semana,2026 - Fin de semana,5,68511.0,70,978.7,0.83
+yellow,2026,Fin de semana,2026 - Fin de semana,6,87204.0,70,1245.8,1.06
+yellow,2026,Fin de semana,2026 - Fin de semana,7,112020.0,70,1600.3,1.36
+yellow,2026,Fin de semana,2026 - Fin de semana,8,162555.0,70,2322.2,1.98
+yellow,2026,Fin de semana,2026 - Fin de semana,9,247559.0,70,3536.6,3.01
+yellow,2026,Fin de semana,2026 - Fin de semana,10,315601.0,70,4508.6,3.84
+yellow,2026,Fin de semana,2026 - Fin de semana,11,374762.0,70,5353.7,4.56
+yellow,2026,Fin de semana,2026 - Fin de semana,12,420566.0,70,6008.1,5.12
+yellow,2026,Fin de semana,2026 - Fin de semana,13,449005.0,70,6414.4,5.46
+yellow,2026,Fin de semana,2026 - Fin de semana,14,458502.0,70,6550.0,5.58
+yellow,2026,Fin de semana,2026 - Fin de semana,15,454701.0,70,6495.7,5.53
+yellow,2026,Fin de semana,2026 - Fin de semana,16,471637.0,70,6737.7,5.74
+yellow,2026,Fin de semana,2026 - Fin de semana,17,490214.0,70,7003.1,5.96
+yellow,2026,Fin de semana,2026 - Fin de semana,18,510569.0,70,7293.8,6.21
+yellow,2026,Fin de semana,2026 - Fin de semana,19,475375.0,70,6791.1,5.78
+yellow,2026,Fin de semana,2026 - Fin de semana,20,420575.0,70,6008.2,5.12
+yellow,2026,Fin de semana,2026 - Fin de semana,21,415101.0,70,5930.0,5.05
+yellow,2026,Fin de semana,2026 - Fin de semana,22,425618.0,70,6080.3,5.18
+yellow,2026,Fin de semana,2026 - Fin de semana,23,396478.0,70,5664.0,4.82
+green,2024,Laborable,2024 - Laborable,0,6349.0,262,24.2,1.37
+green,2024,Laborable,2024 - Laborable,1,3792.0,262,14.5,0.82
+green,2024,Laborable,2024 - Laborable,2,2131.0,262,8.1,0.46
+green,2024,Laborable,2024 - Laborable,3,1339.0,262,5.1,0.29
+green,2024,Laborable,2024 - Laborable,4,1335.0,262,5.1,0.29
+green,2024,Laborable,2024 - Laborable,5,2134.0,262,8.1,0.46
+green,2024,Laborable,2024 - Laborable,6,7896.0,262,30.1,1.7
+green,2024,Laborable,2024 - Laborable,7,19521.0,262,74.5,4.2
+green,2024,Laborable,2024 - Laborable,8,24999.0,262,95.4,5.38
+green,2024,Laborable,2024 - Laborable,9,26493.0,262,101.1,5.7
+green,2024,Laborable,2024 - Laborable,10,24946.0,262,95.2,5.37
+green,2024,Laborable,2024 - Laborable,11,23838.0,262,91.0,5.13
+green,2024,Laborable,2024 - Laborable,12,24388.0,262,93.1,5.25
+green,2024,Laborable,2024 - Laborable,13,24700.0,262,94.3,5.31
+green,2024,Laborable,2024 - Laborable,14,29287.0,262,111.8,6.3
+green,2024,Laborable,2024 - Laborable,15,32329.0,262,123.4,6.95
+green,2024,Laborable,2024 - Laborable,16,35557.0,262,135.7,7.65
+green,2024,Laborable,2024 - Laborable,17,39808.0,262,151.9,8.56
+green,2024,Laborable,2024 - Laborable,18,37618.0,262,143.6,8.09
+green,2024,Laborable,2024 - Laborable,19,29049.0,262,110.9,6.25
+green,2024,Laborable,2024 - Laborable,20,21699.0,262,82.8,4.67
+green,2024,Laborable,2024 - Laborable,21,18657.0,262,71.2,4.01
+green,2024,Laborable,2024 - Laborable,22,15446.0,262,59.0,3.32
+green,2024,Laborable,2024 - Laborable,23,11651.0,262,44.5,2.51
+green,2024,Fin de semana,2024 - Fin de semana,0,4698.0,104,45.2,3.17
+green,2024,Fin de semana,2024 - Fin de semana,1,3789.0,104,36.4,2.56
+green,2024,Fin de semana,2024 - Fin de semana,2,3201.0,104,30.8,2.16
+green,2024,Fin de semana,2024 - Fin de semana,3,2641.0,104,25.4,1.78
+green,2024,Fin de semana,2024 - Fin de semana,4,1909.0,104,18.4,1.29
+green,2024,Fin de semana,2024 - Fin de semana,5,1083.0,104,10.4,0.73
+green,2024,Fin de semana,2024 - Fin de semana,6,1362.0,104,13.1,0.92
+green,2024,Fin de semana,2024 - Fin de semana,7,2385.0,104,22.9,1.61
+green,2024,Fin de semana,2024 - Fin de semana,8,3416.0,104,32.8,2.31
+green,2024,Fin de semana,2024 - Fin de semana,9,4975.0,104,47.8,3.36
+green,2024,Fin de semana,2024 - Fin de semana,10,6365.0,104,61.2,4.3
+green,2024,Fin de semana,2024 - Fin de semana,11,7644.0,104,73.5,5.16
+green,2024,Fin de semana,2024 - Fin de semana,12,8567.0,104,82.4,5.78
+green,2024,Fin de semana,2024 - Fin de semana,13,8856.0,104,85.2,5.98
+green,2024,Fin de semana,2024 - Fin de semana,14,9760.0,104,93.8,6.59
+green,2024,Fin de semana,2024 - Fin de semana,15,10304.0,104,99.1,6.96
+green,2024,Fin de semana,2024 - Fin de semana,16,10561.0,104,101.5,7.13
+green,2024,Fin de semana,2024 - Fin de semana,17,10593.0,104,101.9,7.15
+green,2024,Fin de semana,2024 - Fin de semana,18,10723.0,104,103.1,7.24
+green,2024,Fin de semana,2024 - Fin de semana,19,9345.0,104,89.9,6.31
+green,2024,Fin de semana,2024 - Fin de semana,20,7905.0,104,76.0,5.34
+green,2024,Fin de semana,2024 - Fin de semana,21,7174.0,104,69.0,4.84
+green,2024,Fin de semana,2024 - Fin de semana,22,5804.0,104,55.8,3.92
+green,2024,Fin de semana,2024 - Fin de semana,23,5052.0,104,48.6,3.41
+green,2025,Laborable,2025 - Laborable,0,4758.0,261,18.2,1.14
+green,2025,Laborable,2025 - Laborable,1,2638.0,261,10.1,0.63
+green,2025,Laborable,2025 - Laborable,2,1496.0,261,5.7,0.36
+green,2025,Laborable,2025 - Laborable,3,945.0,261,3.6,0.23
+green,2025,Laborable,2025 - Laborable,4,1161.0,261,4.4,0.28
+green,2025,Laborable,2025 - Laborable,5,2543.0,261,9.7,0.61
+green,2025,Laborable,2025 - Laborable,6,8400.0,261,32.2,2.01
+green,2025,Laborable,2025 - Laborable,7,18848.0,261,72.2,4.51
+green,2025,Laborable,2025 - Laborable,8,24563.0,261,94.1,5.88
+green,2025,Laborable,2025 - Laborable,9,24328.0,261,93.2,5.82
+green,2025,Laborable,2025 - Laborable,10,23221.0,261,89.0,5.56
+green,2025,Laborable,2025 - Laborable,11,22076.0,261,84.6,5.29
+green,2025,Laborable,2025 - Laborable,12,22917.0,261,87.8,5.49
+green,2025,Laborable,2025 - Laborable,13,23163.0,261,88.7,5.55
+green,2025,Laborable,2025 - Laborable,14,25907.0,261,99.3,6.2
+green,2025,Laborable,2025 - Laborable,15,28776.0,261,110.3,6.89
+green,2025,Laborable,2025 - Laborable,16,31940.0,261,122.4,7.65
+green,2025,Laborable,2025 - Laborable,17,35110.0,261,134.5,8.41
+green,2025,Laborable,2025 - Laborable,18,32648.0,261,125.1,7.82
+green,2025,Laborable,2025 - Laborable,19,25020.0,261,95.9,5.99
+green,2025,Laborable,2025 - Laborable,20,18444.0,261,70.7,4.42
+green,2025,Laborable,2025 - Laborable,21,15751.0,261,60.3,3.77
+green,2025,Laborable,2025 - Laborable,22,13324.0,261,51.0,3.19
+green,2025,Laborable,2025 - Laborable,23,9726.0,261,37.3,2.33
+green,2025,Fin de semana,2025 - Fin de semana,0,3810.0,104,36.6,2.93
+green,2025,Fin de semana,2025 - Fin de semana,1,3039.0,104,29.2,2.33
+green,2025,Fin de semana,2025 - Fin de semana,2,2367.0,104,22.8,1.82
+green,2025,Fin de semana,2025 - Fin de semana,3,2060.0,104,19.8,1.58
+green,2025,Fin de semana,2025 - Fin de semana,4,1674.0,104,16.1,1.29
+green,2025,Fin de semana,2025 - Fin de semana,5,1071.0,104,10.3,0.82
+green,2025,Fin de semana,2025 - Fin de semana,6,1402.0,104,13.5,1.08
+green,2025,Fin de semana,2025 - Fin de semana,7,2441.0,104,23.5,1.87
+green,2025,Fin de semana,2025 - Fin de semana,8,3156.0,104,30.3,2.42
+green,2025,Fin de semana,2025 - Fin de semana,9,4799.0,104,46.1,3.69
+green,2025,Fin de semana,2025 - Fin de semana,10,5676.0,104,54.6,4.36
+green,2025,Fin de semana,2025 - Fin de semana,11,6642.0,104,63.9,5.1
+green,2025,Fin de semana,2025 - Fin de semana,12,7920.0,104,76.2,6.08
+green,2025,Fin de semana,2025 - Fin de semana,13,7986.0,104,76.8,6.13
+green,2025,Fin de semana,2025 - Fin de semana,14,8788.0,104,84.5,6.75
+green,2025,Fin de semana,2025 - Fin de semana,15,9070.0,104,87.2,6.97
+green,2025,Fin de semana,2025 - Fin de semana,16,9424.0,104,90.6,7.24
+green,2025,Fin de semana,2025 - Fin de semana,17,9083.0,104,87.3,6.98
+green,2025,Fin de semana,2025 - Fin de semana,18,9347.0,104,89.9,7.18
+green,2025,Fin de semana,2025 - Fin de semana,19,7968.0,104,76.6,6.12
+green,2025,Fin de semana,2025 - Fin de semana,20,6899.0,104,66.3,5.3
+green,2025,Fin de semana,2025 - Fin de semana,21,6009.0,104,57.8,4.61
+green,2025,Fin de semana,2025 - Fin de semana,22,5253.0,104,50.5,4.03
+green,2025,Fin de semana,2025 - Fin de semana,23,4335.0,104,41.7,3.33
+green,2026,Laborable,2026 - Laborable,0,2529.0,173,14.6,1.06
+green,2026,Laborable,2026 - Laborable,1,1313.0,173,7.6,0.55
+green,2026,Laborable,2026 - Laborable,2,747.0,173,4.3,0.31
+green,2026,Laborable,2026 - Laborable,3,502.0,173,2.9,0.21
+green,2026,Laborable,2026 - Laborable,4,771.0,173,4.5,0.32
+green,2026,Laborable,2026 - Laborable,5,1784.0,173,10.3,0.74
+green,2026,Laborable,2026 - Laborable,6,5555.0,173,32.1,2.32
+green,2026,Laborable,2026 - Laborable,7,12082.0,173,69.8,5.04
+green,2026,Laborable,2026 - Laborable,8,15120.0,173,87.4,6.31
+green,2026,Laborable,2026 - Laborable,9,14934.0,173,86.3,6.24
+green,2026,Laborable,2026 - Laborable,10,13764.0,173,79.6,5.75
+green,2026,Laborable,2026 - Laborable,11,12933.0,173,74.8,5.4
+green,2026,Laborable,2026 - Laborable,12,13535.0,173,78.2,5.65
+green,2026,Laborable,2026 - Laborable,13,13326.0,173,77.0,5.56
+green,2026,Laborable,2026 - Laborable,14,15142.0,173,87.5,6.32
+green,2026,Laborable,2026 - Laborable,15,16601.0,173,96.0,6.93
+green,2026,Laborable,2026 - Laborable,16,18253.0,173,105.5,7.62
+green,2026,Laborable,2026 - Laborable,17,19353.0,173,111.9,8.08
+green,2026,Laborable,2026 - Laborable,18,17868.0,173,103.3,7.46
+green,2026,Laborable,2026 - Laborable,19,12976.0,173,75.0,5.42
+green,2026,Laborable,2026 - Laborable,20,9673.0,173,55.9,4.04
+green,2026,Laborable,2026 - Laborable,21,8582.0,173,49.6,3.58
+green,2026,Laborable,2026 - Laborable,22,7290.0,173,42.1,3.04
+green,2026,Laborable,2026 - Laborable,23,4878.0,173,28.2,2.04
+green,2026,Fin de semana,2026 - Fin de semana,0,2167.0,70,31.0,2.96
+green,2026,Fin de semana,2026 - Fin de semana,1,1568.0,70,22.4,2.14
+green,2026,Fin de semana,2026 - Fin de semana,2,1318.0,70,18.8,1.8
+green,2026,Fin de semana,2026 - Fin de semana,3,1176.0,70,16.8,1.61
+green,2026,Fin de semana,2026 - Fin de semana,4,893.0,70,12.8,1.22
+green,2026,Fin de semana,2026 - Fin de semana,5,520.0,70,7.4,0.71
+green,2026,Fin de semana,2026 - Fin de semana,6,613.0,70,8.8,0.84
+green,2026,Fin de semana,2026 - Fin de semana,7,1217.0,70,17.4,1.66
+green,2026,Fin de semana,2026 - Fin de semana,8,1706.0,70,24.4,2.33
+green,2026,Fin de semana,2026 - Fin de semana,9,2709.0,70,38.7,3.7
+green,2026,Fin de semana,2026 - Fin de semana,10,3255.0,70,46.5,4.44
+green,2026,Fin de semana,2026 - Fin de semana,11,3842.0,70,54.9,5.24
+green,2026,Fin de semana,2026 - Fin de semana,12,4616.0,70,65.9,6.3
+green,2026,Fin de semana,2026 - Fin de semana,13,4598.0,70,65.7,6.28
+green,2026,Fin de semana,2026 - Fin de semana,14,4974.0,70,71.1,6.79
+green,2026,Fin de semana,2026 - Fin de semana,15,5252.0,70,75.0,7.17
+green,2026,Fin de semana,2026 - Fin de semana,16,5294.0,70,75.6,7.23
+green,2026,Fin de semana,2026 - Fin de semana,17,5079.0,70,72.6,6.93
+green,2026,Fin de semana,2026 - Fin de semana,18,5372.0,70,76.7,7.33
+green,2026,Fin de semana,2026 - Fin de semana,19,4533.0,70,64.8,6.19
+green,2026,Fin de semana,2026 - Fin de semana,20,3786.0,70,54.1,5.17
+green,2026,Fin de semana,2026 - Fin de semana,21,3374.0,70,48.2,4.61
+green,2026,Fin de semana,2026 - Fin de semana,22,2966.0,70,42.4,4.05
+green,2026,Fin de semana,2026 - Fin de semana,23,2438.0,70,34.8,3.33

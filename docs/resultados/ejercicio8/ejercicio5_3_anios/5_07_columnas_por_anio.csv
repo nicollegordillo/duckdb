@@ -1,0 +1,7 @@
+taxi,anio,registros,pct_cbd_no_nulo,pct_cbd_mayor_0,pct_request_source_no_nulo,pct_airport_fee_no_nulo,pct_congestion_mayor_0,pct_pago_0,pct_pago_nulo,pct_pasajeros_nulo
+yellow,2024,41169720,0.0,0.0,0.0,90.06,81.62,9.94,0.0,9.94
+yellow,2025,48722602,100.0,71.64,0.0,76.17,67.82,23.83,0.0,23.83
+yellow,2026,29703355,100.0,71.76,9.77,74.02,66.07,25.98,0.0,25.98
+green,2024,660218,0.0,0.0,0.0,0.0,28.54,0.0,3.68,3.68
+green,2025,591375,99.35,9.21,0.0,0.0,29.11,0.0,8.43,8.43
+green,2026,337114,100.0,8.32,5.7,0.0,27.48,0.0,14.47,14.47
